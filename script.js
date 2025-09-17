@@ -1,4 +1,4 @@
-// ====== MENU MOBILE (opcional: se usar .nav-toggle no HTML) ======
+// ====== MENU MOBILE (se decidir usar .nav-toggle, já funciona) ======
 function setupMobileMenu(){
   const btn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('mainnav');
@@ -10,7 +10,6 @@ function setupMobileMenu(){
   };
   btn.addEventListener('click', toggle);
 
-  // fecha ao tocar em um link
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     if(nav.classList.contains('is-open')){
       nav.classList.remove('is-open');
@@ -19,8 +18,7 @@ function setupMobileMenu(){
   }));
 }
 
-// ====== GALERIA ======
-// Usando somente assets/album/... e nomes fixos conforme seu acervo
+// ====== GALERIA ====== (paths relativos em assets/album/...)
 const ALBUMS = {
   calendario: [
     'assets/album/calendario/calendario.jpg'
@@ -77,7 +75,7 @@ function loadGallery(){
     fig.className = 'figure';
 
     const img = document.createElement('img');
-    img.src = src;              // relativo à raiz do site (index.html / gallery.html)
+    img.src = src;              // relativo à raiz (index.html / gallery.html)
     img.alt = `${album} ${i+1}`;
     img.loading = 'lazy';
     img.decoding = 'async';

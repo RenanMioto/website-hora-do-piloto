@@ -18,11 +18,11 @@ body{
 
 /* =================== TOPO =================== */
 .topbar{
-  /* sticky no desktop */
   display:flex; align-items:center; gap:16px;
   padding:14px 18px;
   background: #090a0fda; backdrop-filter: blur(6px);
   border-bottom:1px solid var(--line);
+  position: sticky; top:0; z-index:10;
 }
 .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
 .brand img{display:block; width:50px; height:50px}
@@ -35,7 +35,7 @@ body{
 }
 .mainnav a:hover{color:var(--text); border-color:#2a2d3a; background:#141620}
 
-/* Ícones sociais simples */
+/* Ícones sociais com SVG inline */
 .social-actions{
   margin-left: auto;
   display: flex;
@@ -48,20 +48,16 @@ body{
   border-radius: 50%;
   background: var(--panel);
   border: 1px solid var(--line);
-  text-decoration: none; color:#e2e6ee; font-size:12px;
+  text-decoration: none;
   transition: transform .12s ease, background .12s ease, border-color .12s ease;
+  overflow: hidden;
 }
+.icon-btn svg{ width: 18px; height: 18px; fill: currentColor; color:#e2e6ee; display:block; }
 .icon-btn:hover{ transform: translateY(-1px); border-color:#2b2e3e; }
 .icon-btn.wa:hover{ background:#1e7e34; }
 .icon-btn.dc:hover{ background:#5865F2; }
 .icon-btn.ig:hover{ background:#d6249f; }
 .icon-btn.yt:hover{ background:#ff0000; }
-
-/* Desktop sticky */
-@media (min-width: 769px){
-  .topbar{ position: sticky; top:0; z-index: 10; }
-  html{ scroll-padding-top: 80px; }
-}
 
 /* =================== HERO =================== */
 .hero{position:relative; height:48vh; min-height:320px; overflow:hidden; border-bottom:1px solid var(--line)}
@@ -81,14 +77,9 @@ body{
 }
 .btn:hover{ background:var(--brand-2); }
 
-/* seção para vídeo */
-.hero.hero-video{
-  position:relative; height:45vh; min-height:600px; overflow:hidden; border-bottom:1px solid var(--line);
-}
-.hero-video .hero-bg{
-  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: top;
-  filter:contrast(1.05) saturate(1.05);
-}
+/* Vídeo hero */
+.hero.hero-video{ position:relative; height:45vh; min-height:600px; overflow:hidden; border-bottom:1px solid var(--line); }
+.hero-video .hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position: top; filter:contrast(1.05) saturate(1.05); }
 
 /* =================== CONTEÚDO =================== */
 .container{max-width:2000px; margin:35px auto; padding:0 30px}
@@ -155,7 +146,8 @@ body{
   }
 
   .social-actions{ gap: 6px; }
-  .icon-btn{ width: 28px; height: 28px; font-size: 10px; }
+  .icon-btn{ width: 28px; height: 28px; }
+  .icon-btn svg{ width: 14px; height: 14px; }
 
   .hero{ height: 42vh; min-height: 240px; }
   .hero-overlay{ padding: 16px; }
@@ -163,6 +155,30 @@ body{
   .btn{ width: 100%; max-width: 320px; }
 }
 
-/* Acessibilidade/tap + mídia sempre responsiva */
+/* Acessibilidade/tap + mídia responsiva */
 button, .btn, .icon-btn, .mainnav a { touch-action: manipulation; }
 img, video{ max-width:100%; height:auto; }
+
+/* ===== Background global do site ===== */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;                /* top/right/bottom/left: 0 */
+  z-index: -1;             /* fica atrás de todo o conteúdo */
+  pointer-events: none;    /* não bloqueia cliques */
+  /* camada de escurecimento + imagem */
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("assets/backgroundhp.png");
+  background-size: cover;          /* cobre a tela */
+  background-position: center;     /* centraliza */
+  background-repeat: no-repeat;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* iOS/Android: evita “engasgos” em rolagem com elementos fixos muito pesados */
+@media (max-width: 768px){
+  body::before{
+    background-attachment: scroll; /* padrão; mantém suave no mobile */
+  }
+}
