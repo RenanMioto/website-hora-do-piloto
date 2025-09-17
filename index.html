@@ -4,47 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HP Manager</title>
-  <link rel="stylesheet" href="/website-hora-do-piloto/style.css" />
-  <script defer src="/website-hora-do-piloto/script.js"></script>
   <meta name="description" content="Portal do Campeonato de F1 Virtual — calendário, classificações, resultados e mídia." />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Topo fixo -->
-  <header class="topbar">
+  <!-- Topo -->
+  <header class="topbar" role="banner">
     <div class="brand">
-      <img src="/website-hora-do-piloto/logo-f1v.svg" alt="Logotipo F1 Virtual"
-           onerror="this.onerror=null;this.src='/website-hora-do-piloto/LogoHP.png';" />
+      <img
+        src="assets/logo-f1v.svg"
+        alt="Hora do Piloto"
+        onerror="this.onerror=null;this.src='assets/LogoHP.png';"
+      />
       <span>HP Manager</span>
     </div>
 
+    <!-- Botão mobile (opcional: exibir/ocultar menu se quiser) -->
+    <!-- <button class="nav-toggle" aria-label="Abrir menu" aria-controls="mainnav" aria-expanded="false">☰</button> -->
+
     <nav id="mainnav" class="mainnav" aria-label="Menu principal">
-      <a href="/website-hora-do-piloto/gallery.html?album=calendario">Calendário</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=pilotos">Classificação de Pilotos</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=construtores">Classificação de Construtores</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=resultados">Resultados das Etapas</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=midia">Mídia</a>
+      <a href="gallery.html?album=calendario">Calendário</a>
+      <a href="gallery.html?album=pilotos">Classificação de Pilotos</a>
+      <a href="gallery.html?album=construtores">Classificação de Construtores</a>
+      <a href="gallery.html?album=resultados">Resultados das Etapas</a>
+      <a href="gallery.html?album=midia">Mídia</a>
     </nav>
 
-    <!-- Ações sociais -->
+    <!-- Ícones sociais (texto simples pra ficar leve) -->
     <div class="social-actions" aria-label="Ações rápidas">
-      <a class="icon-btn wa" href="https://wa.me/5511974600392" target="_blank" rel="noopener" title="Fale no WhatsApp">WA</a>
-      <a class="icon-btn dc" href="https://discord.gg/B5d2TqZr" target="_blank" rel="noopener" title="Entrar no Discord">DC</a>
+      <a class="icon-btn wa" href="https://wa.me/5511974600392" target="_blank" rel="noopener" title="WhatsApp">WA</a>
+      <a class="icon-btn dc" href="https://discord.gg/B5d2TqZr" target="_blank" rel="noopener" title="Discord">DC</a>
       <a class="icon-btn ig" href="https://www.instagram.com/horadopiloto" target="_blank" rel="noopener" title="Instagram">IG</a>
       <a class="icon-btn yt" href="https://youtube.com/@horadopiloto" target="_blank" rel="noopener" title="YouTube">YT</a>
     </div>
   </header>
 
-  <!-- Hero com vídeo de fundo -->
+  <!-- Hero com vídeo -->
   <section class="hero hero-video">
-    <video class="hero-bg" autoplay muted loop playsinline poster="/website-hora-do-piloto/assets/hero-poster.jpg">
-      <source src="/website-hora-do-piloto/hero.mp4" type="video/mp4" />
+    <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+      <source src="assets/hero.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo em HTML5.
     </video>
+
     <div class="hero-overlay">
       <h1>Hora do Piloto - HP Manager Professional T6</h1>
       <p>Acompanhe calendário, classificações, resultados e destaques.</p>
-      <a class="btn" href="/website-hora-do-piloto/gallery.html?album=calendario">Ver Calendário</a>
-      <a class="btn" href="/website-hora-do-piloto/gallery.html?album=pilotos">Classificação de Pilotos</a>
-      <a class="btn" href="/website-hora-do-piloto/gallery.html?album=construtores">Classificação de Equipes</a>
+      <a class="btn" href="gallery.html?album=calendario">Ver Calendário</a>
+      <a class="btn" href="gallery.html?album=pilotos">Classificação de Pilotos</a>
+      <a class="btn" href="gallery.html?album=construtores">Classificação de Equipes</a>
     </div>
   </section>
 
@@ -52,28 +60,32 @@
   <main class="container">
     <h2>Temporada 6</h2>
     <div class="cards">
-      <a class="card" href="/website-hora-do-piloto/gallery.html?album=calendario">
-        <div class="thumb" style="background-image:url('/website-hora-do-piloto/thumb-calendario.jpg')"></div>
+      <a class="card" href="gallery.html?album=calendario">
+        <div class="thumb" style="background-image:url('assets/thumb-calendario.jpg')"></div>
         <h3>Calendário</h3>
         <p>Datas, pistas e informações de cada GP.</p>
       </a>
-      <a class="card" href="/website-hora-do-piloto/gallery.html?album=pilotos">
-        <div class="thumb" style="background-image:url('/website-hora-do-piloto/thumb-pilotos.jpg')"></div>
+
+      <a class="card" href="gallery.html?album=pilotos">
+        <div class="thumb" style="background-image:url('assets/thumb-pilotos.jpg')"></div>
         <h3>Classificação de Pilotos</h3>
         <p>Pontuação e estatísticas da temporada.</p>
       </a>
-      <a class="card" href="/website-hora-do-piloto/gallery.html?album=construtores">
-        <div class="thumb" style="background-image:url('/website-hora-do-piloto/thumb-construtores.jpg')"></div>
+
+      <a class="card" href="gallery.html?album=construtores">
+        <div class="thumb" style="background-image:url('assets/thumb-construtores.jpg')"></div>
         <h3>Classificação de Construtores</h3>
         <p>Comparativo entre as equipes.</p>
       </a>
-      <a class="card" href="/website-hora-do-piloto/gallery.html?album=resultados">
-        <div class="thumb" style="background-image:url('/website-hora-do-piloto/thumb-resultados.jpg')"></div>
+
+      <a class="card" href="gallery.html?album=resultados">
+        <div class="thumb" style="background-image:url('assets/thumb-resultados.jpg')"></div>
         <h3>Resultados por GP</h3>
         <p>Grids, tempos e resumos de corrida.</p>
       </a>
-      <a class="card" href="/website-hora-do-piloto/gallery.html?album=midia">
-        <div class="thumb" style="background-image:url('/website-hora-do-piloto/thumb-midia.jpg')"></div>
+
+      <a class="card" href="gallery.html?album=midia">
+        <div class="thumb" style="background-image:url('assets/thumb-midia.jpg')"></div>
         <h3>Mídia</h3>
         <p>Imagens, artes e destaques.</p>
       </a>

@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria - HP Manager</title>
-  <link rel="stylesheet" href="/website-hora-do-piloto/style.css">
-  <script defer src="/website-hora-do-piloto/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HP Manager — Galeria</title>
+  <meta name="description" content="Galerias do HP Manager: calendário, pilotos, construtores, resultados e mídia." />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <header class="topbar">
+  <!-- Topo -->
+  <header class="topbar" role="banner">
     <div class="brand">
-      <img src="/website-hora-do-piloto/logo-f1v.svg" alt="Logotipo"
-           onerror="this.onerror=null;this.src='/website-hora-do-piloto/LogoHP.png';" />
+      <img
+        src="assets/logo-f1v.svg"
+        alt="Hora do Piloto"
+        onerror="this.onerror=null;this.src='assets/LogoHP.png';"
+      />
       <span>HP Manager</span>
     </div>
-    <nav id="mainnav" class="mainnav">
-      <a href="/website-hora-do-piloto/index.html">Início</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=calendario">Calendário</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=pilotos">Pilotos</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=construtores">Construtores</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=resultados">Resultados</a>
-      <a href="/website-hora-do-piloto/gallery.html?album=midia">Mídia</a>
+
+    <nav id="mainnav" class="mainnav" aria-label="Menu principal">
+      <a href="index.html">Início</a>
+      <a href="gallery.html?album=calendario">Calendário</a>
+      <a href="gallery.html?album=pilotos">Pilotos</a>
+      <a href="gallery.html?album=construtores">Construtores</a>
+      <a href="gallery.html?album=resultados">Resultados</a>
+      <a href="gallery.html?album=midia">Mídia</a>
     </nav>
-    <div class="social-actions">
+
+    <div class="social-actions" aria-label="Ações rápidas">
       <a class="icon-btn yt" href="https://youtube.com/@horadopiloto" target="_blank">YT</a>
     </div>
   </header>
 
   <main class="container">
     <div class="section-head">
-      <a class="back" href="/website-hora-do-piloto/index.html">← Voltar</a>
-      <h2 id="gallery-title">Galeria</h2>
+      <a class="back" href="index.html">← Voltar</a>
+      <h2 id="album-title">Galeria</h2>
+      <span></span>
     </div>
+
     <div id="gallery-grid" class="grid"></div>
   </main>
 
