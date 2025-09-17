@@ -16,18 +16,50 @@ body{
   color: var(--text);
 }
 
+/* ===== Background global do site ===== */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("assets/backgroundhp.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(1.05) contrast(1.05);
+}
+@media (max-width: 768px){
+  body::before{ background-attachment: scroll; }
+}
+
 /* =================== TOPO =================== */
+/* Base: NÃO sticky (especialmente pro mobile) */
 .topbar{
-  display:flex; align-items:center; gap:16px;
-  padding:14px 18px;
+  display:flex; align-items:center; gap:12px;
+  padding:14px 12px;
   background: #090a0fda; backdrop-filter: blur(6px);
   border-bottom:1px solid var(--line);
-  position: sticky; top:0; z-index:10;
 }
 .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
 .brand img{display:block; width:50px; height:50px}
 .brand span{letter-spacing:.3px}
 
+/* Botão hambúrguer (mostra só no mobile) */
+.nav-toggle{
+  display:none;
+  background:#0f1118;
+  border:1px solid var(--line);
+  color:var(--text);
+  border-radius:8px;
+  padding:8px 10px;
+  font-size:18px;
+  line-height:1;
+}
+
+/* Menu padrão (desktop) */
 .mainnav{display:flex; gap:16px; flex-wrap:wrap; flex:1 1 auto}
 .mainnav a{
   color:var(--muted); text-decoration:none; font-weight:600;
@@ -35,7 +67,7 @@ body{
 }
 .mainnav a:hover{color:var(--text); border-color:#2a2d3a; background:#141620}
 
-/* Ícones sociais com SVG inline */
+/* Ícones sociais */
 .social-actions{
   margin-left: auto;
   display: flex;
@@ -58,6 +90,63 @@ body{
 .icon-btn.dc:hover{ background:#5865F2; }
 .icon-btn.ig:hover{ background:#d6249f; }
 .icon-btn.yt:hover{ background:#ff0000; }
+
+/* ===== Desktop (>=769px): header sticky, menu sempre visível ===== */
+@media (min-width: 769px){
+  .topbar{ position: sticky; top:0; z-index:10; }
+  html{ scroll-padding-top: 80px; }
+  .nav-toggle{ display:none; }
+  .mainnav{ display:flex; position: static; }
+}
+
+/* ===== Mobile (<=768px): header NÃO sticky + menu recolhido ===== */
+@media (max-width: 768px){
+  .brand img{ width: 32px; height: 32px; }
+  .brand span{ font-size: 14px; letter-spacing:.2px; }
+
+  .nav-toggle{ display:inline-flex; }
+
+  /* menu fica oculto por padrão e aparece ao abrir com o botão */
+  .mainnav{
+    display:none;
+    position: absolute;
+    left:0; right:0;
+    top: calc( var(--topbar-bottom, 56px) );
+    padding: 10px 12px 12px;
+    background: #0a0c12f0;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mainnav.is-open{ display:flex; }
+  .mainnav::-webkit-scrollbar{ display: none; }
+
+  .mainnav a{
+    padding: 8px 12px;
+    font-size: 14px;
+    background: #0f1118;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  /* posicionamento da camada do menu: logo + botão definem a altura */
+  .topbar{ position: relative; }
+  /* calcula a borda inferior do topbar para ancorar o menu */
+  .topbar::after{
+    content:"";
+    position:absolute;
+    bottom:-1px; left:0; right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .social-actions{ gap: 6px; }
+  .icon-btn{ width: 28px; height: 28px; }
+  .icon-btn svg{ width: 14px; height: 14px; }
+}
 
 /* =================== HERO =================== */
 .hero{position:relative; height:48vh; min-height:320px; overflow:hidden; border-bottom:1px solid var(--line)}
@@ -119,66 +208,6 @@ body{
 /* =================== FOOTER =================== */
 .footer{border-top:1px solid var(--line); text-align:center; color:var(--muted); padding:18px; margin-top:30px}
 
-/* =================== MOBILE =================== */
-@media (max-width: 768px){
-  .topbar{
-    gap: 12px;
-    padding: calc(10px + env(safe-area-inset-top)) 12px 10px 12px;
-  }
-  .brand img{ width: 32px; height: 32px; }
-  .brand span{ font-size: 14px; letter-spacing:.2px; }
-
-  .mainnav{
-    overflow-x: auto;
-    gap: 10px;
-    scrollbar-width: none;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-  .mainnav::-webkit-scrollbar{ display: none; }
-  .mainnav a{
-    padding: 6px 10px;
-    font-size: 14px;
-    white-space: nowrap;
-    background: #0f1118;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-  }
-
-  .social-actions{ gap: 6px; }
-  .icon-btn{ width: 28px; height: 28px; }
-  .icon-btn svg{ width: 14px; height: 14px; }
-
-  .hero{ height: 42vh; min-height: 240px; }
-  .hero-overlay{ padding: 16px; }
-
-  .btn{ width: 100%; max-width: 320px; }
-}
-
 /* Acessibilidade/tap + mídia responsiva */
 button, .btn, .icon-btn, .mainnav a { touch-action: manipulation; }
 img, video{ max-width:100%; height:auto; }
-
-/* ===== Background global do site ===== */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;                /* top/right/bottom/left: 0 */
-  z-index: -1;             /* fica atrás de todo o conteúdo */
-  pointer-events: none;    /* não bloqueia cliques */
-  /* camada de escurecimento + imagem */
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("assets/backgroundhp.png");
-  background-size: cover;          /* cobre a tela */
-  background-position: center;     /* centraliza */
-  background-repeat: no-repeat;
-  filter: saturate(1.05) contrast(1.05);
-}
-
-/* iOS/Android: evita “engasgos” em rolagem com elementos fixos muito pesados */
-@media (max-width: 768px){
-  body::before{
-    background-attachment: scroll; /* padrão; mantém suave no mobile */
-  }
-}
