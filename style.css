@@ -4,7 +4,7 @@
   --line:#1d1f2b;
   --text:#f2f4f8;
   --muted:#aab0c0;
-  --brand:#e10600;
+  --brand:#e10600; /* vermelho estilo F1 */
   --brand-2:#ff2e2e;
 }
 
@@ -25,7 +25,7 @@ body{
   border-bottom:1px solid var(--line);
 }
 .brand{display:flex; align-items:center; gap:10px; font-weight:700;}
-.brand img{display:block; width:50px; height:50px}
+.brand img{width:50px; height:50px}
 .brand span{letter-spacing:.3px}
 
 .mainnav{display:flex; gap:16px; flex-wrap:wrap}
@@ -49,32 +49,6 @@ body{
 }
 .nav-toggle:active{ transform: translateY(1px); }
 
-/* Ícones sociais */
-.social-actions{
-  margin-left: auto;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.icon-btn{
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  text-decoration: none;
-  transition: transform .12s ease, background .12s ease, border-color .12s ease;
-}
-.icon-btn svg{ width: 18px; height: 18px; fill: currentColor; color: #e2e6ee; }
-.icon-btn:hover{ transform: translateY(-1px); border-color:#2b2e3e; }
-.icon-btn.wa:hover{ background:#1e7e34; }
-.icon-btn.dc:hover{ background:#5865F2; }
-.icon-btn.ig:hover{ background:#d6249f; }
-.icon-btn.yt:hover{ background:#ff0000; }
-
 /* === Desktop (>=769px): header sticky, menu sempre visível === */
 @media (min-width: 769px){
   .topbar{ position: sticky; top:0; z-index: 10; }
@@ -95,16 +69,11 @@ body{
     scrollbar-width: none;
     margin-top: 10px;
     padding-bottom: 4px;
-
-    /* endurecimentos mobile */
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
   }
   .mainnav.is-open{ display:flex; }   /* aberto */
   .mainnav::-webkit-scrollbar{ display: none; }
 
   .mainnav a{
-    display: inline-flex;
     padding: 6px 10px;
     font-size: 14px;
     white-space: nowrap;
@@ -119,17 +88,7 @@ body{
   }
   .brand img{ width: 32px; height: 32px; }
   .brand span{ font-size: 14px; letter-spacing:.2px; }
-
-  /* Ícones menores no mobile */
-  .icon-btn{ width: 32px; height: 32px; }
-  .icon-btn svg{ width: 16px; height: 16px; }
 }
-
-/* Acessibilidade/tap */
-button, .btn, .icon-btn, .mainnav a { touch-action: manipulation; }
-
-/* Garantia de mídia responsiva */
-img, video{ max-width:100%; height:auto; }
 
 /* =================== HERO =================== */
 .hero{position:relative; height:48vh; min-height:320px; overflow:hidden; border-bottom:1px solid var(--line)}
@@ -167,6 +126,12 @@ img, video{ max-width:100%; height:auto; }
   overflow:hidden;
   border-bottom:1px solid var(--line);
 }
+
+.hero-video .hero-bg {
+  object-fit: cover;
+  object-position: top;
+}
+
 .hero-video .hero-bg{
   position:absolute;
   inset:0;
@@ -177,7 +142,6 @@ img, video{ max-width:100%; height:auto; }
   filter:contrast(1.05) saturate(1.05);
 }
 
-/* overlay com gradiente + textos */
 .hero-overlay{
   position:relative;      
   z-index:1;
@@ -188,6 +152,7 @@ img, video{ max-width:100%; height:auto; }
   padding:24px;
   background: linear-gradient(90deg,#000000b0 0%, #00000050 45%, transparent 70%);
 }
+
 .hero-overlay h1{ margin:0 0 8px; font-size:clamp(1.4rem,2.5vw,2rem) }
 .hero-overlay p{ margin:0 0 16px; color:var(--muted) }
 
@@ -219,12 +184,71 @@ img, video{ max-width:100%; height:auto; }
 }
 .figure img {
   display: block;
-  max-width: 60%;
+  max-width: 60%;   
   height: auto;
-  margin: 0 auto;
+  margin: 0 auto;    
   object-fit: contain;
 }
 .figure .cap { display: none; }
 
 /* =================== FOOTER =================== */
 .footer{border-top:1px solid var(--line); text-align:center; color:var(--muted); padding:18px; margin-top:30px}
+
+/* =================== ÍCONES SOCIAIS =================== */
+.brand a,
+.brand a:link,
+.brand a:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+.brand a:hover { opacity: .9; }
+
+.social-actions{
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-btn{
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.icon-btn svg{ width: 18px; height: 18px; fill: currentColor; color: #e2e6ee; }
+.icon-btn:hover{ transform: translateY(-1px); border-color:#2b2e3e; }
+
+.icon-btn.wa:hover{ background:#1e7e34; }
+.icon-btn.dc:hover{ background:#5865F2; }
+.icon-btn.ig:hover{ background:#d6249f; }
+.icon-btn.yt:hover{ background:#ff0000; }
+
+/* Mobile: ícones menores */
+@media (max-width: 720px){
+  .icon-btn{ width: 32px; height: 32px; }
+  .icon-btn svg{ width: 16px; height: 16px; }
+}
+
+/* Hero mobile ajustes */
+@media (max-width: 768px){
+  .hero{ height: 46vh; min-height: 260px; }
+  .hero-overlay{ padding: 16px; }
+  .hero-buttons{ width: 100%; max-width: 320px; }
+  .hero-buttons .btn{
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+}
