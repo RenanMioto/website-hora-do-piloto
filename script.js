@@ -1,98 +1,51 @@
-// ====== MENU MOBILE ======
+function abs(path){
+  return `/website-hora-do-piloto${path.startsWith('/') ? path : '/' + path}`;
+}
+
 function setupMobileMenu(){
   const btn = document.querySelector('.nav-toggle');
   const nav = document.getElementById('mainnav');
   if(!btn || !nav) return;
-
   const toggle = () => {
     const open = nav.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', String(open));
   };
   btn.addEventListener('click', toggle);
-
-  // fecha ao tocar em um link
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    if(nav.classList.contains('is-open')){
-      nav.classList.remove('is-open');
-      btn.setAttribute('aria-expanded','false');
-    }
+    nav.classList.remove('is-open');
+    btn.setAttribute('aria-expanded','false');
   }));
-}
-
-// ====== GALERIA ====== (paths conforme sua árvore atual)
-const ALBUMS = {
-  calendario: [
-    'assets/album/calendario/calendario.jpg'
-  ],
-  pilotos: [
-    'assets/album/pilotos/pilotos.png'
-  ],
-  construtores: [
-    'assets/album/construtores/construtores.png'
-  ],
-  resultados: [
-    'assets/album/resultados/gp1.png',
-    'assets/album/resultados/gp2.png',
-    'assets/album/resultados/gp3.png',
-    'assets/album/resultados/gp4.png'
-  ],
-  midia: [
-    'midia-podio-gp01.jpg',
-    'assets/album/midia/pilotos.png'
-  ]
-};
-
-const TITLES = {
-  calendario: 'Calendário',
-  pilotos: 'Classificação de Pilotos',
-  construtores: 'Classificação de Construtores',
-  resultados: 'Resultados das Etapas',
-  midia: 'Mídia'
-};
-
-function getParam(name){
-  const q = new URLSearchParams(location.search);
-  return (q.get(name) || '').toLowerCase();
 }
 
 function loadGallery(){
   const grid = document.getElementById('gallery-grid');
   if(!grid) return;
-
-  const album = getParam('album');
-  const list = ALBUMS[album] || [];
-
-  // título
-  const h2 = document.getElementById('album-title');
-  if(h2 && TITLES[album]) h2.textContent = TITLES[album];
-
-  if(!list.length){
-    grid.innerHTML = `<p style="color:var(--muted)">Nenhuma imagem configurada para o álbum <strong>${album || '(vazio)'}</strong>.</p>`;
-    return;
+  const url = new URL(window.location.href);
+  const album = url.searchParams.get('album') || 'midia';
+  const title = document.getElementById('gallery-title');
+  if(title){
+    title.textContent = album.charAt(0).toUpperCase()+album.slice(1);
   }
-
-  grid.innerHTML = '';
-  list.forEach((src, i) => {
-    const fig = document.createElement('figure');
-    fig.className = 'figure';
-
-    const img = document.createElement('img');
-    img.src = src;              // relativo à raiz do projeto (index.html / gallery.html)
-    img.alt = `${album} ${i+1}`;
+  const exts = ['jpg','png','webp'];
+  let items = [];
+  for(let i=1;i<=20;i++){
+    for(const ext of exts){
+      items.push(`/website-hora-do-piloto/assets/album/${album}/${album}${i}.${ext}`);
+    }
+  }
+  items.forEach(src=>{
+    const img = new Image();
+    img.src = src;
     img.loading = 'lazy';
-    img.decoding = 'async';
-
-    const cap = document.createElement('figcaption');
-    cap.className = 'cap';
-    cap.textContent = '';
-
-    fig.appendChild(img);
-    fig.appendChild(cap);
-    grid.appendChild(fig);
+    img.onload = ()=>{
+      const fig = document.createElement('figure');
+      fig.className='figure';
+      fig.innerHTML = `<img src="${src}" alt=""><figcaption class="cap"></figcaption>`;
+      grid.appendChild(fig);
+    };
   });
 }
 
-// ====== BOOT ======
 document.addEventListener('DOMContentLoaded', ()=>{
   setupMobileMenu();
   loadGallery();
