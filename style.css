@@ -205,6 +205,58 @@ body::before{
 }
 .figure .cap { display: none; }
 
+/* ======= CORREÇÃO MOBILE PARA PÁGINA STATS ======= */
+@media (max-width: 768px) {
+
+  /* Permitir que a página role lateralmente quando o conteúdo for largo */
+  html, body {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  /* Container com padding menor e ajuste de largura */
+  .container {
+    padding: 0 10px;
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
+  /* Corrige elementos internos que estavam fixando largura demais */
+  section, .card, .stats-block, .table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;        /* permite arrastar lateralmente */
+    -webkit-overflow-scrolling: touch; /* rolagem suave no iOS */
+  }
+
+  /* Ajusta tabelas grandes */
+  table {
+    display: block;
+    width: max-content;
+    max-width: none;
+    overflow-x: auto;
+    border-collapse: collapse;
+    white-space: nowrap;    /* impede quebra de linha */
+  }
+
+  th, td {
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  /* Reposiciona cards de estatísticas empilhando verticalmente */
+  .cards, .grid, .stats-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Evita que o topo fixe sobre o conteúdo */
+  .topbar {
+    position: relative;
+  }
+}
+
+
 /* =================== FOOTER =================== */
 .footer{border-top:1px solid var(--line); text-align:center; color:var(--muted); padding:18px; margin-top:30px}
 
