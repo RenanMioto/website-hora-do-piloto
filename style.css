@@ -8,13 +8,29 @@
   --brand-2:#ff2e2e;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;                  /* evita corte lateral */
+  -webkit-text-size-adjust: 100%;      /* impede zoom automático do Safari */
+  -webkit-overflow-scrolling: touch;   /* suaviza o scroll no iPhone */
+  scroll-behavior: smooth;             /* rolagem suave */
+  touch-action: manipulation;          /* bloqueia gestos indesejados */
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
+
 
 /* ===== Background global do site ===== */
 body::before{
