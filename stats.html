@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <link rel="stylesheet" href="style.css" />
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>HP Manager • Histórico</title>
 <style>
 :root{ --bg:#0a0a0e; --panel:#111119; --card:#161621; --ink:#f5f6f8; --muted:#b3b3be; --line:#262638; --accent:#e10600; }
@@ -40,6 +40,21 @@ select,input[type="search"]{background:#0f0f17; border:1px solid var(--line); co
   section.card{ border-color:#aaa; background:#fff }
   thead th{ background:#eee; color:#000 }
 }
+/* ======= PREVENIR ZOOM AUTOMÁTICO NO iOS ======= */
+
+/* Evita que Safari aumente fonte/zoom ao focar */
+input, select, textarea, button {
+  font-size: 16px !important; /* Safari faz zoom em fontes menores que 16px */
+}
+
+/* Mantém escala fixa da página */
+html, body {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%; /* bloqueia zoom por ajuste automático de texto */
+  -webkit-user-select: none; /* opcional: evita seleção acidental */
+  overscroll-behavior: none;
+}
+
 </style>
 </head>
 <body>
@@ -283,5 +298,11 @@ sortTable('tbl-circ');
 <footer class="main-footer">
   <p>© 2025 Hora do Piloto — HP Manager Professional</p>
 </footer>
+<script>
+  // Bloqueia gestos de pinça e duplo toque que dão zoom
+  document.addEventListener('gesturestart', e => e.preventDefault());
+  document.addEventListener('dblclick', e => e.preventDefault());
+</script>
+
 </body>
 </html>
