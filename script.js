@@ -39,7 +39,11 @@ const ALBUMS = {
     'assets/album/resultados/gp1.png',
     'assets/album/resultados/gp2.png',
     'assets/album/resultados/gp3.png',
-    'assets/album/resultados/gp4.png'
+    'assets/album/resultados/gp4.png',
+    'assets/album/resultados/gp5.png',
+    'assets/album/resultados/gp6.png',
+    'assets/album/resultados/gp7.png',
+    'assets/album/resultados/gp8.png'
   ],
   midia: [ 'assets/album/midia/pilotos.png' ]
 };

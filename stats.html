@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<link rel="stylesheet" href="style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HP Manager • Histórico</title>
+<style>
+:root{ --bg:#0a0a0e; --panel:#111119; --card:#161621; --ink:#f5f6f8; --muted:#b3b3be; --line:#262638; --accent:#e10600; }
+*{box-sizing:border-box}
+body{margin:0; font-family:Inter,Segoe UI,Roboto,Arial,sans-serif; background:linear-gradient(145deg,var(--bg),#0c0c13); color:#fff}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+header.topbar{display:flex; gap:12px; align-items:flex-start; justify-content:space-between; margin-bottom:12px}
+.btn{background:#0f0f17; color:#fff; border:1px solid var(--line); padding:8px 12px; border-radius:10px; cursor:pointer}
+.btn:hover{background:#151522}
+.kpi{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; min-width:420px}
+.kpi .card{background:linear-gradient(180deg,#151524,#0f0f17); border:1px solid var(--line); border-radius:12px; padding:10px 12px}
+.kpi .lbl{font-size:.80rem; color:#b3b3be; margin-bottom:4px}
+.kpi .val{font-size:1.25rem; font-weight:700}
+.tablewrap{overflow:auto; border:1px solid var(--line); border-radius:12px; margin-top:10px}
+section.card{background:linear-gradient(180deg,#14141e,#0f0f17); border:1px solid var(--line); border-radius:14px; padding:16px; margin-top:14px}
+h2.title{margin:0 0 10px; font-size:1.18rem; border-left:4px solid var(--accent); padding-left:8px}
+table{border-collapse:separate; border-spacing:0; width:100%; min-width:920px; font-size:.95rem}
+th,td{padding:10px 12px; border-bottom:1px solid #202033; text-align:left; user-select:none}
+thead th{position:sticky; top:0; background:#181821; color:#fff; z-index:1; cursor:pointer}
+tbody tr:nth-child(even){background:#10101a} tbody tr:hover{background:#181825}
+.controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:6px 0 8px}
+select,input[type="search"]{background:#0f0f17; border:1px solid var(--line); color:#fff; padding:8px 10px; border-radius:10px; outline:none}
+.grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+.kbox{background:#11111a; border:1px solid var(--line); border-radius:12px; padding:10px 12px}
+.kbox h4{margin:0 0 8px; font-size:1rem; color:#fff}
+.krow{display:grid; grid-template-columns:220px 1fr 1fr; gap:10px; padding:6px 0; border-bottom:1px dashed #24243a}
+.krow:last-child{border-bottom:0}
+.krow .label{color:#b3b3be}
+.note{color:#b3b3be; font-size:.92rem; margin-top:6px}
+@media print{
+  header.topbar, .controls { display:none !important; }
+  body{ background:#fff; color:#000 }
+  section.card{ border-color:#aaa; background:#fff }
+  thead th{ background:#eee; color:#000 }
+}
+</style>
+</head>
+<body>
+   <!-- Topo -->
+  <header class="topbar" role="banner">
+    <div class="brand">
+        <img
+        src="assets/logo-f1v.svg"
+        alt="Hora do Piloto"
+        onerror="this.onerror=null;this.src='assets/LogoHP.png';"/>
+      <span>HP Manager</span>
+    </div>
+
+  <!-- Botão (aparece no mobile) -->
+    <button class="nav-toggle" aria-label="Abrir menu" aria-controls="mainnav" aria-expanded="false">☰</button>
+
+  <nav id="mainnav" class="mainnav" aria-label="Menu principal">
+    <a href="index.html">Início</a>
+      <a href="gallery.html?album=calendario">Calendário</a>
+      <a href="gallery.html?album=pilotos">Classificação de Pilotos</a>
+      <a href="gallery.html?album=construtores">Classificação de Construtores</a>
+      <a href="gallery.html?album=resultados">Resultados das Etapas</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<header class="topbar">
+  <div>
+    <h1 style="font-size:1.2rem;margin:0">HP Manager • Histórico <span style="font-size:.85rem;opacity:.7"></span></h1>
+    <div class="kpi" id="kpi-box">
+      <div class="card"><div class="lbl">Total de Temporadas</div><div class="val" id="k-temporadas">6</div></div>
+      <div class="card"><div class="lbl">Total de Corridas</div><div class="val" id="k-corridas">—</div></div>
+      <div class="card"><div class="lbl">Total de Pistas</div><div class="val" id="k-pistas">—</div></div>
+      <div class="card"><div class="lbl">Pilotos com estatísticas</div><div class="val" id="k-pilotos">—</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="card" id="sec-circuitos">
+  <h2 class="title">Circuitos — Históricos e Recordes</h2>
+  <div class="controls">
+    <select id="fc-circuito"><option value="">Selecione um circuito…</option></select>
+  </div>
+
+  <div id="circuito-box" style="display:none">
+    <div class="grid2">
+      <div class="kbox">
+        <h4>Recordes deste circuito</h4>
+        <div class="krow"><div class="label">Recorde Extra Oficial (Quali)</div><div id="rec-quali-piloto">-</div><div id="rec-quali-tempo">-</div></div>
+        <div class="krow"><div class="label">Temporada</div><div id="rec-quali-temp">-</div><div id="rec-quali-jogo" style="text-align:right">-</div></div>
+        <div class="krow"><div class="label">Recorde Oficial (Corrida)</div><div id="rec-vr-piloto">-</div><div id="rec-vr-tempo">-</div></div>
+        <div class="krow"><div class="label">Temporada</div><div id="rec-vr-temp">-</div><div id="rec-vr-jogo" style="text-align:right">-</div></div>
+      </div>
+      <div class="kbox">
+        <h4>Resumo deste circuito</h4>
+        <div class="krow"><div class="label">Total de Corridas</div><div id="c-k-corridas">-</div><div></div></div>
+        <div class="krow"><div class="label">Vencedores distintos</div><div id="c-k-vencedores">-</div><div></div></div>
+        <div class="krow"><div class="label">Poles distintas</div><div id="c-k-poles">-</div><div></div></div>
+        <div class="krow"><div class="label">VR distintas</div><div id="c-k-vr">-</div><div></div></div>
+      </div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px">
+      <table id="tbl-circ">
+        <thead><tr>
+          <th data-k="temporada">Temporada</th><th data-k="jogo">Jogo</th><th data-k="vencedor">Vencedor</th>
+          <th data-k="pole_piloto">Pole</th><th data-k="pole_tempo">Tempo</th>
+          <th data-k="volta_rapida_piloto">Volta Rápida</th><th data-k="volta_rapida_tempo">Tempo</th>
+          <th data-k="piloto_do_dia">Piloto do Dia</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="note">Na lista do circuito: 🏁 no <b>tempo</b> de Pole recordista e ⚡ no <b>tempo</b> de VR recordista.</div>
+  </div>
+</section>
+
+<section class="card" id="sec-pilotos">
+  <h2 class="title">Estatísticas de Pilotos</h2>
+  <div class="tablewrap" style="margin-top:8px">
+    <table id="tbl-pilotos">
+      <thead>
+        <tr>
+          <th data-k="piloto">Piloto</th><th data-k="vitórias">Vitórias</th><th data-k="pódios">Pódios</th><th data-k="poles">Poles</th><th data-k="voltas rápidas">Voltas Rápidas</th><th data-k="piloto do dia">Piloto do Dia</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card" id="sec-todas">
+  <h2 class="title">Todos Eventos</h2>
+  <div class="controls">
+    <select id="ft-temporada"><option value="">Todas as temporadas</option></select>
+    <select id="ft-circuito"><option value="">Todos os circuitos</option></select>
+    <input id="ft-busca" type="search" placeholder="Buscar piloto/circuito..." />
+  </div>
+  <div class="tablewrap">
+    <table id="tbl-todas">
+      <thead><tr>
+        <th data-k="temporada">Temporada</th><th data-k="jogo">Jogo</th><th data-k="circuito">Circuito</th><th data-k="vencedor">Vencedor</th>
+        <th data-k="podio_2">P2</th><th data-k="podio_3">P3</th>
+        <th data-k="pole_piloto">Pole</th><th data-k="pole_tempo">Tempo</th>
+        <th data-k="volta_rapida_piloto">Volta Rápida</th><th data-k="volta_rapida_tempo">Tempo</th>
+        <th data-k="piloto_do_dia">Piloto do Dia</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+<script>
+const DATA = {"races": [{"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "FRANÇA", "pole_piloto": "Rafael Ramalho", "pole_tempo": "1:30.904", "podio_1": "Hugo", "podio_2": "Nando Kamers", "podio_3": "Rafael Ramalho", "piloto_do_dia": "Feliphe", "volta_rapida_piloto": "SpiderPiggey", "volta_rapida_tempo": "1:33.155", "vencedor": "Hugo", "pole_secs": 90.904, "vr_secs": 93.155}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "HUNGRIA", "pole_piloto": "Hugo", "pole_tempo": "1:16.578", "podio_1": "Nando Kamers", "podio_2": "Alan Cadu", "podio_3": "Edinei Urso", "piloto_do_dia": "Alan Cadu", "volta_rapida_piloto": "Rafael Almeida", "volta_rapida_tempo": "1:18.848", "vencedor": "Nando Kamers", "pole_secs": 76.578, "vr_secs": 78.848}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "BÉLGICA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:43.562", "podio_1": "Alan Cadu", "podio_2": "Hugo", "podio_3": "Nando Kamers", "piloto_do_dia": "Thiago Vaz", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:46.606", "vencedor": "Alan Cadu", "pole_secs": 103.562, "vr_secs": 106.606}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "HOLANDA", "pole_piloto": "Hugo", "pole_tempo": "1:11.211", "podio_1": "Santana", "podio_2": "Nando Kamers", "podio_3": "Rafael Ramalho", "piloto_do_dia": "Edinei Urso", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:13.346", "vencedor": "Santana", "pole_secs": 71.211, "vr_secs": 73.346}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "MONZA", "pole_piloto": "Hugo", "pole_tempo": "1:19.981", "podio_1": "Hugo", "podio_2": "Rafael Ramalho", "podio_3": "Alan Cadu", "piloto_do_dia": "Santana", "volta_rapida_piloto": "Edinei Urso", "volta_rapida_tempo": "1:22.080", "vencedor": "Hugo", "pole_secs": 79.981, "vr_secs": 82.08}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "MIAMI", "pole_piloto": "Nando Kamers", "pole_tempo": "1:28.079", "podio_1": "Paulo Liberatti", "podio_2": "Feliphe", "podio_3": "Rafael Almeida", "piloto_do_dia": "LeoFera", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:30.485", "vencedor": "Paulo Liberatti", "pole_secs": 88.079, "vr_secs": 90.485}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "SINGAPURA", "pole_piloto": "Hugo", "pole_tempo": "1:37.612", "podio_1": "Rafael Ramalho", "podio_2": "Alan Cadu", "podio_3": "Hugo", "piloto_do_dia": "Alan Cadu", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:39.486", "vencedor": "Rafael Ramalho", "pole_secs": 97.612, "vr_secs": 99.486}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "JAPÃO", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:29.833", "podio_1": "Paulo Liberatti", "podio_2": "Renan Mioto", "podio_3": "Nando Kamers", "piloto_do_dia": "TheProdigyNixx", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:40.807", "vencedor": "Paulo Liberatti", "pole_secs": 89.833, "vr_secs": 100.807}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "TEXAS", "pole_piloto": "Nando Kamers", "pole_tempo": "1:33.662", "podio_1": "Paulo Liberatti", "podio_2": "Nando Kamers", "podio_3": "Hugo", "piloto_do_dia": "Edy Santos", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:35.674", "vencedor": "Paulo Liberatti", "pole_secs": 93.662, "vr_secs": 95.674}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "MÉXICO", "pole_piloto": "Rafael Ramalho", "pole_tempo": "1:16.456", "podio_1": "Nando Kamers", "podio_2": "Hugo", "podio_3": "Alan Cadu", "piloto_do_dia": "Fernandes", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:18.147", "vencedor": "Nando Kamers", "pole_secs": 76.456, "vr_secs": 78.147}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "BRASIL", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:16.765", "podio_1": "Paulo Liberatti", "podio_2": "Nando Kamers", "podio_3": "Hugo", "piloto_do_dia": "Santana", "volta_rapida_piloto": "Santana", "volta_rapida_tempo": "1:09.661", "vencedor": "Paulo Liberatti", "pole_secs": 76.765, "vr_secs": 69.661}, {"temporada": "1ª Temporada", "jogo": "F1 22", "circuito": "ABU DHABI", "pole_piloto": "Hugo", "pole_tempo": "1:23.688", "podio_1": "Paulo Liberatti", "podio_2": "Alan Cadu", "podio_3": "Renan Mioto", "piloto_do_dia": "LeoFera", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:25.931", "vencedor": "Paulo Liberatti", "pole_secs": 83.688, "vr_secs": 85.931}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "BAHREIN", "pole_piloto": "Rafael Ramalho", "pole_tempo": "1:28.408", "podio_1": "Nando Kamers", "podio_2": "Renan Mioto", "podio_3": "Feliphe", "piloto_do_dia": "Paulo Liberatti", "volta_rapida_piloto": "Nando Kamers", "volta_rapida_tempo": "1:30.831", "vencedor": "Nando Kamers", "pole_secs": 88.408, "vr_secs": 90.831}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "JEDDAH", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:28.378", "podio_1": "Nando Kamers", "podio_2": "Rafael Ramalho", "podio_3": "Paulo Liberatti", "piloto_do_dia": "TheProdigyNixx", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:31.111", "vencedor": "Nando Kamers", "pole_secs": 88.378, "vr_secs": 91.111}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "AUSTRALIA", "pole_piloto": "Rafael Ramalho", "pole_tempo": "1:17.805", "podio_1": "Paulo Liberatti", "podio_2": "Alan Cadu", "podio_3": "Renan Mioto", "piloto_do_dia": "Rafahulk", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:20.407", "vencedor": "Paulo Liberatti", "pole_secs": 77.805, "vr_secs": 80.407}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "BAKU", "pole_piloto": "Alan Cadu", "pole_tempo": "1:40.144", "podio_1": "Renan Mioto", "podio_2": "Santana", "podio_3": "Arthur", "piloto_do_dia": "Jeff Marchi", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:43.108", "vencedor": "Renan Mioto", "pole_secs": 100.144, "vr_secs": 103.108}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "MIAMI", "pole_piloto": "Nando Kamers", "pole_tempo": "1:27.380", "podio_1": "Paulo Liberatti", "podio_2": "Nando Kamers", "podio_3": "Alan Cadu", "piloto_do_dia": "LeoFera", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:28.709", "vencedor": "Paulo Liberatti", "pole_secs": 87.38, "vr_secs": 88.709}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "IMOLA", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:15.727", "podio_1": "Paulo Liberatti", "podio_2": "Rafahulk", "podio_3": "Alan Cadu", "piloto_do_dia": "Rafael Ramalho", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:17.633", "vencedor": "Paulo Liberatti", "pole_secs": 75.727, "vr_secs": 77.633}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "MÔNACO", "pole_piloto": "Rafahulk", "pole_tempo": "1:10.388", "podio_1": "Alan Cadu", "podio_2": "Paulo Liberatti", "podio_3": "Allan Cataneo", "piloto_do_dia": "Allan Cataneo", "volta_rapida_piloto": "Rafahulk", "volta_rapida_tempo": "1:12.907", "vencedor": "Alan Cadu", "pole_secs": 70.388, "vr_secs": 72.907}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "ESPANHA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:17.295", "podio_1": "Alan Cadu", "podio_2": "Rafael Ramalho", "podio_3": "Nando Kamers", "piloto_do_dia": "Renan Mioto", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:19.951", "vencedor": "Alan Cadu", "pole_secs": 77.295, "vr_secs": 79.951}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "CANADA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:17.788", "podio_1": "Paulo Liberatti", "podio_2": "Alan Cadu", "podio_3": "Rafahulk", "piloto_do_dia": "Ivan Storm", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:12.874", "vencedor": "Paulo Liberatti", "pole_secs": 77.788, "vr_secs": 72.874}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "AUSTRIA", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:04.934", "podio_1": "Nando Kamers", "podio_2": "Paulo Liberatti", "podio_3": "Alan Cadu", "piloto_do_dia": "Paulo Liberatti", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:06.656", "vencedor": "Nando Kamers", "pole_secs": 64.934, "vr_secs": 66.656}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "INGLATERRA", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:27.663", "podio_1": "Paulo Liberatti", "podio_2": "Rafahulk", "podio_3": "Alan Cadu", "piloto_do_dia": "Santana", "volta_rapida_piloto": "Nando Kamers", "volta_rapida_tempo": "1:29.612", "vencedor": "Paulo Liberatti", "pole_secs": 87.663, "vr_secs": 89.612}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "HUNGRIA", "pole_piloto": "Rafahulk", "pole_tempo": "1:16.588", "podio_1": "Nando Kamers", "podio_2": "Renan Mioto", "podio_3": "Rafahulk", "piloto_do_dia": "Anderson Rodrigues", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:18.040", "vencedor": "Nando Kamers", "pole_secs": 76.588, "vr_secs": 78.04}, {"temporada": "2ª Temporada", "jogo": "F1 23", "circuito": "BÉLGICA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:43.155", "podio_1": "Alan Cadu", "podio_2": "Nando Kamers", "podio_3": "Paulo Liberatti", "piloto_do_dia": "Nando Kamers", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:45.606", "vencedor": "Alan Cadu", "pole_secs": 103.155, "vr_secs": 105.606}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "HOLANDA", "pole_piloto": "Renan Mioto", "pole_tempo": "1:09.199", "podio_1": "Nando Kamers", "podio_2": "Alan Cadu", "podio_3": "Rafael Almeida", "piloto_do_dia": "Fernandes", "volta_rapida_piloto": "Fernandes", "volta_rapida_tempo": "1:12.077", "vencedor": "Nando Kamers", "pole_secs": 69.199, "vr_secs": 72.077}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "MONZA", "pole_piloto": "Renan Mioto", "pole_tempo": "1:20.048", "podio_1": "Renan Mioto", "podio_2": "Rafael Almeida", "podio_3": "Caio Harfang", "piloto_do_dia": "Arthur", "volta_rapida_piloto": "TioBarba", "volta_rapida_tempo": "1:21.610", "vencedor": "Renan Mioto", "pole_secs": 80.048, "vr_secs": 81.61}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "SINGAPURA", "pole_piloto": "Rafael Almeida", "pole_tempo": "1:29.510", "podio_1": "Paulo Liberatti", "podio_2": "Alan Cadu", "podio_3": "Rafael Almeida", "piloto_do_dia": "Feeroots", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:31.977", "vencedor": "Paulo Liberatti", "pole_secs": 89.51, "vr_secs": 91.977}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "JAPÃO", "pole_piloto": "Nando Kamers", "pole_tempo": "1:27.646", "podio_1": "Nando Kamers", "podio_2": "Arthur", "podio_3": "Feeroots", "piloto_do_dia": "Anderson Rodrigues", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:29.243", "vencedor": "Nando Kamers", "pole_secs": 87.646, "vr_secs": 89.243}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "QATAR", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:20.997", "podio_1": "Paulo Liberatti", "podio_2": "Alan Cadu", "podio_3": "Rafael Almeida", "piloto_do_dia": "Anderson Rodrigues", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:23.709", "vencedor": "Paulo Liberatti", "pole_secs": 80.997, "vr_secs": 83.709}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "TEXAS", "pole_piloto": "Caio Harfang", "pole_tempo": "1:33.483", "podio_1": "Nando Kamers", "podio_2": "Paulo Liberatti", "podio_3": "Caio Harfang", "piloto_do_dia": "Rafael Almeida", "volta_rapida_piloto": "Rafael Almeida", "volta_rapida_tempo": "1:35.557", "vencedor": "Nando Kamers", "pole_secs": 93.483, "vr_secs": 95.557}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "MÉXICO", "pole_piloto": "Rafael Almeida", "pole_tempo": "1:16.936", "podio_1": "Rafael Almeida", "podio_2": "Alan Cadu", "podio_3": "Arthur", "piloto_do_dia": "Nando Kamers", "volta_rapida_piloto": "Thiago Vaz", "volta_rapida_tempo": "1:18.915", "vencedor": "Rafael Almeida", "pole_secs": 76.936, "vr_secs": 78.915}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "BRASIL", "pole_piloto": "Jhon Marchi", "pole_tempo": "1:08.453", "podio_1": "Paulo Liberatti", "podio_2": "Nando Kamers", "podio_3": "Alan Cadu", "piloto_do_dia": "Pipoxu", "volta_rapida_piloto": "Pipoxu", "volta_rapida_tempo": "1:10.164", "vencedor": "Paulo Liberatti", "pole_secs": 68.453, "vr_secs": 70.164}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "LAS VEGAS", "pole_piloto": "Nando Kamers", "pole_tempo": "1:32.262", "podio_1": "Nando Kamers", "podio_2": "Rafahulk", "podio_3": "Alan Cadu", "piloto_do_dia": "Rafael Almeida", "volta_rapida_piloto": "Arthur", "volta_rapida_tempo": "1:35.597", "vencedor": "Nando Kamers", "pole_secs": 92.262, "vr_secs": 95.597}, {"temporada": "3ª Temporada", "jogo": "F1 23", "circuito": "ABU DHABI", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:22.704", "podio_1": "Alan Cadu", "podio_2": "Nando Kamers", "podio_3": "Paulo Liberatti", "piloto_do_dia": "TioBarba", "volta_rapida_piloto": "Feeroots", "volta_rapida_tempo": "1:24.562", "vencedor": "Alan Cadu", "pole_secs": 82.704, "vr_secs": 84.562}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "BÉLGICA", "pole_piloto": "Jarryer", "pole_tempo": "1:51.670", "podio_1": "Rafael Almeida", "podio_2": "Caio Harfang", "podio_3": "Renan Mioto", "piloto_do_dia": "Caio Harfang", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:44.600", "vencedor": "Rafael Almeida", "pole_secs": 111.67, "vr_secs": 104.6}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "HOLANDA", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:09.162", "podio_1": "Renan Mioto", "podio_2": "Jeff Marchi", "podio_3": "Caio Harfang", "piloto_do_dia": "Ivan Storm", "volta_rapida_piloto": "Rafael Almeida", "volta_rapida_tempo": "1:10.975", "vencedor": "Renan Mioto", "pole_secs": 69.162, "vr_secs": 70.975}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "MONZA", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:19.564", "podio_1": "Renan Mioto", "podio_2": "Paulo Liberatti", "podio_3": "Lucas Carmo", "piloto_do_dia": "Duck Olivia", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:21.123", "vencedor": "Renan Mioto", "pole_secs": 79.564, "vr_secs": 81.123}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "BAKU", "pole_piloto": "Lucas Carmo", "pole_tempo": "1:39.127", "podio_1": "Lucas Carmo", "podio_2": "Renan Mioto", "podio_3": "Rafael Almeida", "piloto_do_dia": "Rafael Almeida", "volta_rapida_piloto": "Rafael Almeida", "volta_rapida_tempo": "1:40.161", "vencedor": "Lucas Carmo", "pole_secs": 99.127, "vr_secs": 100.161}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "SINGAPURA", "pole_piloto": "Jarryer", "pole_tempo": "1:27.097", "podio_1": "Renan Mioto", "podio_2": "Paulo Liberatti", "podio_3": "Rafael Almeida", "piloto_do_dia": "Renan Mioto", "volta_rapida_piloto": "Jarryer", "volta_rapida_tempo": "1:29.681", "vencedor": "Renan Mioto", "pole_secs": 87.097, "vr_secs": 89.681}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "TEXAS", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:31.693", "podio_1": "Caio Harfang", "podio_2": "Lucas Carmo", "podio_3": "Paulo Liberatti", "piloto_do_dia": "Lucas Carmo", "volta_rapida_piloto": "Anderson Rodrigues", "volta_rapida_tempo": "1:33.820", "vencedor": "Caio Harfang", "pole_secs": 91.693, "vr_secs": 93.82}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "MÉXICO", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:13.980", "podio_1": "Paulo Liberatti", "podio_2": "Renan Mioto", "podio_3": "Rafael Almeida", "piloto_do_dia": "Caio Harfang", "volta_rapida_piloto": "Arthur", "volta_rapida_tempo": "1:16.109", "vencedor": "Paulo Liberatti", "pole_secs": 73.98, "vr_secs": 76.109}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "BRASIL", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:15.300", "podio_1": "Jeff Marchi", "podio_2": "Renan Mioto", "podio_3": "Rafael Almeida", "piloto_do_dia": "Leo Neto", "volta_rapida_piloto": "Jeff Marchi", "volta_rapida_tempo": "1:16.197", "vencedor": "Jeff Marchi", "pole_secs": 75.3, "vr_secs": 76.197}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "LAS VEGAS", "pole_piloto": "Jarryer", "pole_tempo": "1:31.333", "podio_1": "Renan Mioto", "podio_2": "Jeff Marchi", "podio_3": "Leo Neto", "piloto_do_dia": "Lucas Carmo", "volta_rapida_piloto": "Rafael Almeida", "volta_rapida_tempo": "1:33.132", "vencedor": "Renan Mioto", "pole_secs": 91.333, "vr_secs": 93.132}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "QATAR", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:21.285", "podio_1": "Paulo Liberatti", "podio_2": "Renan Mioto", "podio_3": "Jeff Marchi", "piloto_do_dia": "Thiago Ferraz", "volta_rapida_piloto": "Jarryer", "volta_rapida_tempo": "1:24.482", "vencedor": "Paulo Liberatti", "pole_secs": 81.285, "vr_secs": 84.482}, {"temporada": "4ª Temporada", "jogo": "F1 24", "circuito": "ABU DHABI", "pole_piloto": "Lucas Moresch", "pole_tempo": "1:22.461", "podio_1": "Lucas Moresch", "podio_2": "Caio Harfang", "podio_3": "Alan Cadu", "piloto_do_dia": "Ivan Storm", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:25.563", "vencedor": "Lucas Moresch", "pole_secs": 82.461, "vr_secs": 85.563}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "AUSTRALIA", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:15.614", "podio_1": "Renan Mioto", "podio_2": "Rafahulk", "podio_3": "Paulo Liberatti", "piloto_do_dia": "Anderson Rodrigues", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:20.552", "vencedor": "Renan Mioto", "pole_secs": 75.614, "vr_secs": 80.552}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "CHINA", "pole_piloto": "Caio Harfang", "pole_tempo": "1:30.744", "podio_1": "Renan Mioto", "podio_2": "Jhon Marchi", "podio_3": "Leo Neto", "piloto_do_dia": "Feliphe", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:33.845", "vencedor": "Renan Mioto", "pole_secs": 90.744, "vr_secs": 93.845}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "JAPÃO", "pole_piloto": "Renan Mioto", "pole_tempo": "1:27.677", "podio_1": "Renan Mioto", "podio_2": "Alan Cadu", "podio_3": "Paulo Liberatti", "piloto_do_dia": "Jeff Marchi", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:30.461", "vencedor": "Renan Mioto", "pole_secs": 87.677, "vr_secs": 90.461}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "BAHREIN", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:27.486", "podio_1": "Paulo Liberatti", "podio_2": "Alan Cadu", "podio_3": "Samuka", "piloto_do_dia": "Alan Cadu", "volta_rapida_piloto": "Leo Neto", "volta_rapida_tempo": "1:29.967", "vencedor": "Paulo Liberatti", "pole_secs": 87.486, "vr_secs": 89.967}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "JEDDAH", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:27.960", "podio_1": "Renan Mioto", "podio_2": "Paulo Liberatti", "podio_3": "Alan Cadu", "piloto_do_dia": "Fernandes", "volta_rapida_piloto": "Tony Peterson", "volta_rapida_tempo": "1:29.850", "vencedor": "Renan Mioto", "pole_secs": 87.96, "vr_secs": 89.85}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "MIAMI", "pole_piloto": "Alan Cadu", "pole_tempo": "1:25.544", "podio_1": "Alan Cadu", "podio_2": "Renan Mioto", "podio_3": "Jhon Marchi", "piloto_do_dia": "Leo Neto", "volta_rapida_piloto": "Tony Peterson", "volta_rapida_tempo": "1:28.704", "vencedor": "Alan Cadu", "pole_secs": 85.544, "vr_secs": 88.704}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "IMOLA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:13.848", "podio_1": "Alan Cadu", "podio_2": "Renan Mioto", "podio_3": "Anderson Rodrigues", "piloto_do_dia": "Alexx Navarro", "volta_rapida_piloto": "Renan Mioto", "volta_rapida_tempo": "1:16.604", "vencedor": "Alan Cadu", "pole_secs": 73.848, "vr_secs": 76.604}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "MÔNACO", "pole_piloto": "Alan Cadu", "pole_tempo": "1:08.175", "podio_1": "Samuka", "podio_2": "Alan Cadu", "podio_3": "Renan Mioto", "piloto_do_dia": "Caio Harfang", "volta_rapida_piloto": "Rafahulk", "volta_rapida_tempo": "1:10.536", "vencedor": "Samuka", "pole_secs": 68.175, "vr_secs": 70.536}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "ESPANHA", "pole_piloto": "Renan Mioto", "pole_tempo": "1:11.776", "podio_1": "Paulo Liberatti", "podio_2": "Caio Harfang", "podio_3": "Jhon Marchi", "piloto_do_dia": "Leo Neto", "volta_rapida_piloto": "Anderson Rodrigues", "volta_rapida_tempo": "1:13.917", "vencedor": "Paulo Liberatti", "pole_secs": 71.776, "vr_secs": 73.917}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "CANADA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:08.927", "podio_1": "Samuka", "podio_2": "Alan Cadu", "podio_3": "Renan Mioto", "piloto_do_dia": "Samuka", "volta_rapida_piloto": "Samuka", "volta_rapida_tempo": "1:10.726", "vencedor": "Samuka", "pole_secs": 68.927, "vr_secs": 70.726}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "AUSTRIA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:03.927", "podio_1": "Renan Mioto", "podio_2": "Caio Harfang", "podio_3": "Anderson Rodrigues", "piloto_do_dia": "Thiago Ferraz", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:05.733", "vencedor": "Renan Mioto", "pole_secs": 63.927, "vr_secs": 65.733}, {"temporada": "5ª Temporada", "jogo": "F1 24", "circuito": "INGLATERRA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:26.530", "podio_1": "Alan Cadu", "podio_2": "Renan Mioto", "podio_3": "Cícero", "piloto_do_dia": "Jeff Marchi", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:27.987", "vencedor": "Alan Cadu", "pole_secs": 86.53, "vr_secs": 87.987}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "BÉLGICA", "pole_piloto": "Tony Peterson", "pole_tempo": "1:41.800", "podio_1": "Alan Cadu", "podio_2": "Paulo Liberatti", "podio_3": "Renan Mioto", "piloto_do_dia": "Arthur", "volta_rapida_piloto": "Alan Cadu", "volta_rapida_tempo": "1:44.191", "vencedor": "Alan Cadu", "pole_secs": 101.8, "vr_secs": 104.191}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "HUNGRIA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:15.767", "podio_1": "Alan Cadu", "podio_2": "Renan Mioto", "podio_3": "Thiago Ferraz", "piloto_do_dia": "Tony Peterson", "volta_rapida_piloto": "Rafahulk", "volta_rapida_tempo": "1:18.018", "vencedor": "Alan Cadu", "pole_secs": 75.767, "vr_secs": 78.018}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "HOLANDA", "pole_piloto": "Tony Peterson", "pole_tempo": "1:09.162", "podio_1": "Paulo Liberatti", "podio_2": "Thiago Ferraz", "podio_3": "Alan Cadu", "piloto_do_dia": "Ivan Storm", "volta_rapida_piloto": "Rafahulk", "volta_rapida_tempo": "1:10.428", "vencedor": "Paulo Liberatti", "pole_secs": 69.162, "vr_secs": 70.428}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "MONZA", "pole_piloto": "Alan Cadu", "pole_tempo": "1:18.445", "podio_1": "Alan Cadu", "podio_2": "Rafahulk", "podio_3": "Jeff Marchi", "piloto_do_dia": "Renan Mioto", "volta_rapida_piloto": "Tony Peterson", "volta_rapida_tempo": "1:21.230", "vencedor": "Alan Cadu", "pole_secs": 78.445, "vr_secs": 81.23}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "BAKU", "pole_piloto": "Rafahulk", "pole_tempo": "1:38.910", "podio_1": "Rafahulk", "podio_2": "Renan Mioto", "podio_3": "Thiago Ferraz", "piloto_do_dia": "Paulo Liberatti", "volta_rapida_piloto": "Fernando Tezotto", "volta_rapida_tempo": "1:41.648", "vencedor": "Rafahulk", "pole_secs": 98.91, "vr_secs": 101.648}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "SINGAPURA", "pole_piloto": "Paulo Liberatti", "pole_tempo": "1:28.249", "podio_1": "Renan Mioto", "podio_2": "Rafahulk", "podio_3": "Alan Cadu", "piloto_do_dia": "Jeff Marchi", "volta_rapida_piloto": "Feliphe", "volta_rapida_tempo": "1:31.339", "vencedor": "Renan Mioto", "pole_secs": 88.249, "vr_secs": 91.339}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "TEXAS", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:32.056", "podio_1": "Thiago Ferraz", "podio_2": "Renan Mioto", "podio_3": "Paulo Liberatti", "piloto_do_dia": "Fernando Tezotto", "volta_rapida_piloto": "Paulo Liberatti", "volta_rapida_tempo": "1:34.576", "vencedor": "Thiago Ferraz", "pole_secs": 92.056, "vr_secs": 94.576}, {"temporada": "6ª Temporada", "jogo": "F1 25", "circuito": "MÉXICO", "pole_piloto": "Jeff Marchi", "pole_tempo": "1:15.110", "podio_1": "Renan Mioto", "podio_2": "Jeff Marchi", "podio_3": "Paulo Liberatti", "piloto_do_dia": "Rafahulk", "volta_rapida_piloto": "Arthur", "volta_rapida_tempo": "1:17.624", "vencedor": "Renan Mioto", "pole_secs": 75.11, "vr_secs": 77.624}], "pilot_stats": [{"piloto": "Paulo Liberatti", "vitórias": 18, "pódios": 33, "poles": 13, "voltas rápidas": 11, "piloto do dia": 3}, {"piloto": "Renan Mioto", "vitórias": 13, "pódios": 32, "poles": 4, "voltas rápidas": 9, "piloto do dia": 3}, {"piloto": "Alan Cadu", "vitórias": 11, "pódios": 36, "poles": 13, "voltas rápidas": 12, "piloto do dia": 3}, {"piloto": "Nando Kamers", "vitórias": 10, "pódios": 21, "poles": 5, "voltas rápidas": 2, "piloto do dia": 2}, {"piloto": "Rafael Almeida", "vitórias": 2, "pódios": 11, "poles": 2, "voltas rápidas": 5, "piloto do dia": 3}, {"piloto": "Hugo", "vitórias": 2, "pódios": 7, "poles": 5, "voltas rápidas": 0, "piloto do dia": 0}, {"piloto": "Samuka", "vitórias": 2, "pódios": 3, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "Rafahulk", "vitórias": 1, "pódios": 9, "poles": 3, "voltas rápidas": 4, "piloto do dia": 2}, {"piloto": "Caio Harfang", "vitórias": 1, "pódios": 8, "poles": 2, "voltas rápidas": 0, "piloto do dia": 3}, {"piloto": "Jeff Marchi", "vitórias": 1, "pódios": 6, "poles": 7, "voltas rápidas": 1, "piloto do dia": 4}, {"piloto": "Rafael Ramalho", "vitórias": 1, "pódios": 6, "poles": 4, "voltas rápidas": 0, "piloto do dia": 1}, {"piloto": "Thiago Ferraz", "vitórias": 1, "pódios": 4, "poles": 0, "voltas rápidas": 0, "piloto do dia": 2}, {"piloto": "Lucas Carmo", "vitórias": 1, "pódios": 3, "poles": 1, "voltas rápidas": 0, "piloto do dia": 2}, {"piloto": "Santana", "vitórias": 1, "pódios": 2, "poles": 0, "voltas rápidas": 1, "piloto do dia": 3}, {"piloto": "Lucas Moresch", "vitórias": 1, "pódios": 1, "poles": 1, "voltas rápidas": 0, "piloto do dia": 0}, {"piloto": "Jhon Marchi", "vitórias": 0, "pódios": 3, "poles": 1, "voltas rápidas": 0, "piloto do dia": 0}, {"piloto": "Arthur", "vitórias": 0, "pódios": 3, "poles": 0, "voltas rápidas": 3, "piloto do dia": 2}, {"piloto": "Anderson Rodrigues", "vitórias": 0, "pódios": 2, "poles": 0, "voltas rápidas": 2, "piloto do dia": 4}, {"piloto": "Leo Neto", "vitórias": 0, "pódios": 2, "poles": 0, "voltas rápidas": 1, "piloto do dia": 3}, {"piloto": "Feliphe", "vitórias": 0, "pódios": 2, "poles": 0, "voltas rápidas": 1, "piloto do dia": 2}, {"piloto": "Edinei Urso", "vitórias": 0, "pódios": 1, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "Feeroots", "vitórias": 0, "pódios": 1, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "Allan Cataneo", "vitórias": 0, "pódios": 1, "poles": 0, "voltas rápidas": 0, "piloto do dia": 1}, {"piloto": "Cícero", "vitórias": 0, "pódios": 1, "poles": 0, "voltas rápidas": 0, "piloto do dia": 0}, {"piloto": "Jarryer", "vitórias": 0, "pódios": 0, "poles": 3, "voltas rápidas": 2, "piloto do dia": 0}, {"piloto": "Tony Peterson", "vitórias": 0, "pódios": 0, "poles": 2, "voltas rápidas": 3, "piloto do dia": 1}, {"piloto": "Fernandes", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 1, "piloto do dia": 3}, {"piloto": "Fernando Tezotto", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "Pipoxu", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "Thiago Vaz", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "TioBarba", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 1, "piloto do dia": 1}, {"piloto": "SpiderPiggey", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 1, "piloto do dia": 0}, {"piloto": "Ivan Storm", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 0, "piloto do dia": 4}, {"piloto": "LeoFera", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 0, "piloto do dia": 3}, {"piloto": "TheProdigyNixx", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 0, "piloto do dia": 2}, {"piloto": "Alexx Navarro", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 0, "piloto do dia": 1}, {"piloto": "Duck Olivia", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 0, "piloto do dia": 1}, {"piloto": "Edy Santos", "vitórias": 0, "pódios": 0, "poles": 0, "voltas rápidas": 0, "piloto do dia": 1}], "circuits": ["ABU DHABI", "AUSTRALIA", "AUSTRIA", "BAHREIN", "BAKU", "BRASIL", "BÉLGICA", "CANADA", "CHINA", "ESPANHA", "FRANÇA", "HOLANDA", "HUNGRIA", "IMOLA", "INGLATERRA", "JAPÃO", "JEDDAH", "LAS VEGAS", "MIAMI", "MONZA", "MÉXICO", "MÔNACO", "QATAR", "SINGAPURA", "TEXAS"], "best": [{"circuito": "ABU DHABI", "best_quali_tempo": "1:22.461", "best_quali_piloto": "Lucas Moresch", "best_quali_temporada": "4ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:24.562", "best_vr_piloto": "Feeroots", "best_vr_temporada": "3ª Temporada", "best_vr_jogo": "F1 23"}, {"circuito": "AUSTRALIA", "best_quali_tempo": "1:15.614", "best_quali_piloto": "Paulo Liberatti", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:20.407", "best_vr_piloto": "Paulo Liberatti", "best_vr_temporada": "2ª Temporada", "best_vr_jogo": "F1 23"}, {"circuito": "AUSTRIA", "best_quali_tempo": "1:03.927", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:05.733", "best_vr_piloto": "Alan Cadu", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "BAHREIN", "best_quali_tempo": "1:27.486", "best_quali_piloto": "Paulo Liberatti", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:29.967", "best_vr_piloto": "Leo Neto", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "BAKU", "best_quali_tempo": "1:38.910", "best_quali_piloto": "Rafahulk", "best_quali_temporada": "6ª Temporada", "best_quali_jogo": "F1 25", "best_vr_tempo": "1:40.161", "best_vr_piloto": "Rafael Almeida", "best_vr_temporada": "4ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "BRASIL", "best_quali_tempo": "1:08.453", "best_quali_piloto": "Jhon Marchi", "best_quali_temporada": "3ª Temporada", "best_quali_jogo": "F1 23", "best_vr_tempo": "1:09.661", "best_vr_piloto": "Santana", "best_vr_temporada": "1ª Temporada", "best_vr_jogo": "F1 22"}, {"circuito": "BÉLGICA", "best_quali_tempo": "1:41.800", "best_quali_piloto": "Tony Peterson", "best_quali_temporada": "6ª Temporada", "best_quali_jogo": "F1 25", "best_vr_tempo": "1:44.191", "best_vr_piloto": "Alan Cadu", "best_vr_temporada": "6ª Temporada", "best_vr_jogo": "F1 25"}, {"circuito": "CANADA", "best_quali_tempo": "1:08.927", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:10.726", "best_vr_piloto": "Samuka", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "CHINA", "best_quali_tempo": "1:30.744", "best_quali_piloto": "Caio Harfang", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:33.845", "best_vr_piloto": "Renan Mioto", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "ESPANHA", "best_quali_tempo": "1:11.776", "best_quali_piloto": "Renan Mioto", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:13.917", "best_vr_piloto": "Anderson Rodrigues", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "FRANÇA", "best_quali_tempo": "1:30.904", "best_quali_piloto": "Rafael Ramalho", "best_quali_temporada": "1ª Temporada", "best_quali_jogo": "F1 22", "best_vr_tempo": "1:33.155", "best_vr_piloto": "SpiderPiggey", "best_vr_temporada": "1ª Temporada", "best_vr_jogo": "F1 22"}, {"circuito": "HOLANDA", "best_quali_tempo": "1:09.162", "best_quali_piloto": "Jeff Marchi", "best_quali_temporada": "4ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:10.428", "best_vr_piloto": "Rafahulk", "best_vr_temporada": "6ª Temporada", "best_vr_jogo": "F1 25"}, {"circuito": "HUNGRIA", "best_quali_tempo": "1:15.767", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "6ª Temporada", "best_quali_jogo": "F1 25", "best_vr_tempo": "1:18.018", "best_vr_piloto": "Rafahulk", "best_vr_temporada": "6ª Temporada", "best_vr_jogo": "F1 25"}, {"circuito": "IMOLA", "best_quali_tempo": "1:13.848", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:16.604", "best_vr_piloto": "Renan Mioto", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "INGLATERRA", "best_quali_tempo": "1:26.530", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:27.987", "best_vr_piloto": "Alan Cadu", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "JAPÃO", "best_quali_tempo": "1:27.646", "best_quali_piloto": "Nando Kamers", "best_quali_temporada": "3ª Temporada", "best_quali_jogo": "F1 23", "best_vr_tempo": "1:29.243", "best_vr_piloto": "Paulo Liberatti", "best_vr_temporada": "3ª Temporada", "best_vr_jogo": "F1 23"}, {"circuito": "JEDDAH", "best_quali_tempo": "1:27.960", "best_quali_piloto": "Paulo Liberatti", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:29.850", "best_vr_piloto": "Tony Peterson", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "LAS VEGAS", "best_quali_tempo": "1:31.333", "best_quali_piloto": "Jarryer", "best_quali_temporada": "4ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:33.132", "best_vr_piloto": "Rafael Almeida", "best_vr_temporada": "4ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "MIAMI", "best_quali_tempo": "1:25.544", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:28.704", "best_vr_piloto": "Tony Peterson", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "MONZA", "best_quali_tempo": "1:18.445", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "6ª Temporada", "best_quali_jogo": "F1 25", "best_vr_tempo": "1:21.123", "best_vr_piloto": "Paulo Liberatti", "best_vr_temporada": "4ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "MÉXICO", "best_quali_tempo": "1:13.980", "best_quali_piloto": "Jeff Marchi", "best_quali_temporada": "4ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:16.109", "best_vr_piloto": "Arthur", "best_vr_temporada": "4ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "MÔNACO", "best_quali_tempo": "1:08.175", "best_quali_piloto": "Alan Cadu", "best_quali_temporada": "5ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:10.536", "best_vr_piloto": "Rafahulk", "best_vr_temporada": "5ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "QATAR", "best_quali_tempo": "1:20.997", "best_quali_piloto": "Paulo Liberatti", "best_quali_temporada": "3ª Temporada", "best_quali_jogo": "F1 23", "best_vr_tempo": "1:23.709", "best_vr_piloto": "Paulo Liberatti", "best_vr_temporada": "3ª Temporada", "best_vr_jogo": "F1 23"}, {"circuito": "SINGAPURA", "best_quali_tempo": "1:27.097", "best_quali_piloto": "Jarryer", "best_quali_temporada": "4ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:29.681", "best_vr_piloto": "Jarryer", "best_vr_temporada": "4ª Temporada", "best_vr_jogo": "F1 24"}, {"circuito": "TEXAS", "best_quali_tempo": "1:31.693", "best_quali_piloto": "Jeff Marchi", "best_quali_temporada": "4ª Temporada", "best_quali_jogo": "F1 24", "best_vr_tempo": "1:33.820", "best_vr_piloto": "Anderson Rodrigues", "best_vr_temporada": "4ª Temporada", "best_vr_jogo": "F1 24"}], "kpis": {"corridas": 66, "pistas": 25, "pilotos": 38}};
+
+function el(sel){return document.querySelector(sel)}
+function fillSelect(sel, arr){const s=el(sel); arr.forEach(x=>{const o=document.createElement('option');o.value=x;o.textContent=x;s.appendChild(o);})}
+
+function sortTable(tid){
+  const table = el('#'+tid);
+  const ths = table.querySelectorAll('thead th');
+  ths.forEach((th, idx)=>{
+    th.addEventListener('click', ()=>{
+      const dir = th.dataset.dir === 'asc' ? 'desc' : 'asc';
+      ths.forEach(h=>h.removeAttribute('data-dir'));
+      th.dataset.dir = dir;
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      rows.sort((a,b)=>{
+        const av = a.children[idx].dataset.sort ?? a.children[idx].textContent.trim();
+        const bv = b.children[idx].dataset.sort ?? b.children[idx].textContent.trim();
+        let cmp = 0;
+        const numA = parseFloat(String(av).replace(',', '.')); const numB = parseFloat(String(bv).replace(',', '.'));
+        if(!Number.isNaN(numA) && !Number.isNaN(numB)) cmp = numA - numB; else cmp = String(av).localeCompare(String(bv), 'pt-BR', {numeric:true});
+        return dir==='asc' ? cmp : -cmp;
+      });
+      rows.forEach(r=>tbody.appendChild(r));
+    });
+  });
+}
+
+// KPIs
+(function setKPIs(){
+  el('#k-corridas').textContent = DATA.kpis.corridas;
+  el('#k-pistas').textContent = DATA.kpis.pistas;
+  el('#k-pilotos').textContent = DATA.kpis.pilotos;
+})();
+
+// init filters
+(function initFilters(){
+  const temps=[...new Set(DATA.races.map(r=>r.temporada))].sort();
+  const circs=[...new Set(DATA.races.map(r=>r.circuito))].sort();
+  fillSelect('#ft-temporada', temps);
+  fillSelect('#ft-circuito', circs);
+  fillSelect('#fc-circuito', circs);
+})();
+
+function renderTodas(){
+  const tVal=el('#ft-temporada').value.trim();
+  const cVal=el('#ft-circuito').value.trim().toLowerCase();
+  const qVal=el('#ft-busca').value.trim().toLowerCase();
+  const tb=el('#tbl-todas tbody'); tb.innerHTML='';
+  DATA.races
+    .filter(r=>!tVal||r.temporada===tVal)
+    .filter(r=>!cVal||r.circuito.toLowerCase()===cVal)
+    .filter(r=>!qVal||Object.values(r).some(v=>(v||'').toString().toLowerCase().includes(qVal)))
+    .forEach(r=>{
+      const jogo = (r.jogo && r.jogo.trim()) ? r.jogo : "—";
+      const tr=document.createElement('tr');
+      tr.innerHTML=`<td>${r.temporada}</td><td data-sort="${jogo}">${jogo}</td><td>${r.circuito}</td><td>${r.vencedor}</td>
+        <td>${r.podio_2}</td><td>${r.podio_3}</td>
+        <td>${r.pole_piloto}</td><td>${r.pole_tempo}</td>
+        <td>${r.volta_rapida_piloto}</td><td>${r.volta_rapida_tempo}</td>
+        <td>${r.piloto_do_dia}</td>`;
+      tb.appendChild(tr);
+    });
+}
+el('#ft-temporada').addEventListener('change', renderTodas);
+el('#ft-circuito').addEventListener('change', renderTodas);
+el('#ft-busca').addEventListener('input', renderTodas);
+renderTodas();
+sortTable('tbl-todas');
+
+// Pilotos
+(function fillPilots(){
+  const tb=el('#tbl-pilotos tbody'); tb.innerHTML='';
+  DATA.pilot_stats.forEach(r=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.piloto}</td><td data-sort="${r["vitórias"]}">${r["vitórias"]}</td><td data-sort="${r["pódios"]}">${r["pódios"]}</td><td data-sort="${r["poles"]}">${r["poles"]}</td><td data-sort="${r["voltas rápidas"]}">${r["voltas rápidas"]}</td><td data-sort="${r["piloto do dia"]}">${r["piloto do dia"]}</td>`;
+    tb.appendChild(tr);
+  });
+})();
+sortTable('tbl-pilotos');
+
+// Circuitos (emojis apenas nos tempos recordistas)
+const BEST_BY_CIRCUIT = Object.fromEntries(DATA.best.map(b=>[b.circuito, b]));
+
+function renderCircuit(){
+  const c=el('#fc-circuito').value.trim();
+  const box=el('#circuito-box');
+  if(!c){ box.style.display='none'; return; }
+  box.style.display='';
+  const rows=DATA.races.filter(r=>r.circuito===c);
+  const best = BEST_BY_CIRCUIT[c] || {};
+
+  el('#c-k-corridas').textContent = rows.length;
+  el('#c-k-vencedores').textContent = new Set(rows.map(r=>r.vencedor).filter(Boolean)).size;
+  el('#c-k-poles').textContent = new Set(rows.map(r=>r.pole_piloto).filter(Boolean)).size;
+  el('#c-k-vr').textContent = new Set(rows.map(r=>r.volta_rapida_piloto).filter(Boolean)).size;
+
+  el('#rec-quali-tempo').textContent = best.best_quali_tempo || '-';
+  el('#rec-quali-piloto').textContent = best.best_quali_piloto || '-';
+  el('#rec-quali-temp').textContent   = best.best_quali_temporada || '-';
+  el('#rec-quali-jogo').textContent   = best.best_quali_jogo || '-';
+  el('#rec-vr-tempo').textContent     = best.best_vr_tempo || '-';
+  el('#rec-vr-piloto').textContent    = best.best_vr_piloto || '-';
+  el('#rec-vr-temp').textContent      = best.best_vr_temporada || '-';
+  el('#rec-vr-jogo').textContent      = best.best_vr_jogo || '-';
+
+  const tb=el('#tbl-circ tbody'); tb.innerHTML='';
+  rows.sort((a,b)=>a.temporada.localeCompare(b.temporada)).forEach(r=>{
+    const jogo = (r.jogo && r.jogo.trim()) ? r.jogo : "—";
+    const isBestPole = best.best_quali_tempo && r.pole_tempo === best.best_quali_tempo;
+    const isBestVR   = best.best_vr_tempo && r.volta_rapida_tempo === best.best_vr_tempo;
+    const poleTempo  = isBestPole ? `🏁 ${r.pole_tempo}` : (r.pole_tempo||"");
+    const vrTempo    = isBestVR   ? `⚡ ${r.volta_rapida_tempo}` : (r.volta_rapida_tempo||"");
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${r.temporada}</td><td data-sort="${jogo}">${jogo}</td>
+      <td>${r.vencedor}</td>
+      <td>${r.pole_piloto}</td><td>${poleTempo}</td>
+      <td>${r.volta_rapida_piloto}</td><td>${vrTempo}</td>
+      <td>${r.piloto_do_dia}</td>`;
+    tb.appendChild(tr);
+  });
+}
+el('#fc-circuito').addEventListener('change', renderCircuit);
+sortTable('tbl-circ');
+</script>
+<footer class="main-footer">
+  <p>© 2025 Hora do Piloto — HP Manager Professional</p>
+</footer>
+</body>
+</html>
