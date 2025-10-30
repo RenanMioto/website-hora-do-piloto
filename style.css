@@ -256,6 +256,46 @@ body::before{
   }
 }
 
+/* ======= CORREÇÃO BLOCO DE RECORDES NO MOBILE ======= */
+@media (max-width: 768px) {
+  /* Corrige os dois blocos lado a lado */
+  .circuito-info, .records-row, .records-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* Cada card ocupa 100% e o texto quebra normalmente */
+  .records-card, .records-box, .records-section {
+    width: 100% !important;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-x: visible;
+    text-align: left;
+  }
+
+  /* Ajuste visual do título */
+  .records-card h3,
+  .records-section h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  /* Linhas de informação (label + valor) */
+  .records-card p,
+  .records-section p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Garante que selects e tabelas não saiam da tela */
+  select, table {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 
 /* =================== FOOTER =================== */
 .footer{border-top:1px solid var(--line); text-align:center; color:var(--muted); padding:18px; margin-top:30px}
