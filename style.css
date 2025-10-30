@@ -148,6 +148,51 @@ body::before{
   .icon-btn svg{ width: 14px; height: 14px; }
 }
 
+/* ======= CORREÇÃO FINAL: RECORDES E RESUMOS ======= */
+@media (max-width: 768px) {
+
+  /* Força os dois blocos a empilharem verticalmente */
+  .records-row, .circuito-info {
+    display: flex;
+    flex-direction: column !important;
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* Cada bloco ocupa toda a largura */
+  .records-box, .records-section, .records-card, .circuito-bloco {
+    width: 100% !important;
+    max-width: 100%;
+    overflow: visible !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+
+  /* Corrige texto cortado */
+  .records-box span,
+  .records-box p,
+  .records-section span,
+  .records-section p {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+
+  /* Ajuste de padding e espaçamento interno */
+  .records-box, .records-section {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  /* Ajusta o tamanho das fontes dos títulos */
+  .records-box h3,
+  .records-section h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+}
+
 /* =================== HERO =================== */
 .hero{position:relative; height:48vh; min-height:320px; overflow:hidden; border-bottom:1px solid var(--line)}
 .hero img, .hero video{width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.05) saturate(1.05)}
