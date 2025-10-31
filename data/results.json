@@ -1,0 +1,1850 @@
+[
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "FRANÇA",
+    "pole": {
+      "piloto": "Rafael Ramalho",
+      "tempo": "1:30.904"
+    },
+    "podio": [
+      {
+        "piloto": "Hugo",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Ramalho",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "SpiderPiggey",
+      "tempo": "1:33.155"
+    },
+    "piloto_dia": "Feliphe"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "HUNGRIA",
+    "pole": {
+      "piloto": "Hugo",
+      "tempo": "1:16.578"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Edinei Urso",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:18.848"
+    },
+    "piloto_dia": "Alan Cadu"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "BÉLGICA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:43.562"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Hugo",
+        "posicao": 2
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:46.606"
+    },
+    "piloto_dia": "Thiago Vaz"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "HOLANDA",
+    "pole": {
+      "piloto": "Hugo",
+      "tempo": "1:11.211"
+    },
+    "podio": [
+      {
+        "piloto": "Santana",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Ramalho",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:13.346"
+    },
+    "piloto_dia": "Edinei Urso"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "MONZA",
+    "pole": {
+      "piloto": "Hugo",
+      "tempo": "1:19.981"
+    },
+    "podio": [
+      {
+        "piloto": "Hugo",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafael Ramalho",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Edinei Urso",
+      "tempo": "1:22.080"
+    },
+    "piloto_dia": "Santana"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "MIAMI",
+    "pole": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:28.079"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Feliphe",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:30.485"
+    },
+    "piloto_dia": "LeoFera"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "SINGAPURA",
+    "pole": {
+      "piloto": "Hugo",
+      "tempo": "1:37.612"
+    },
+    "podio": [
+      {
+        "piloto": "Rafael Ramalho",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Hugo",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:39.486"
+    },
+    "piloto_dia": "Alan Cadu"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "JAPÃO",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:29.833"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:40.807"
+    },
+    "piloto_dia": "TheProdigyNixx"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "TEXAS",
+    "pole": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:33.662"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Hugo",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:35.674"
+    },
+    "piloto_dia": "Edy Santos"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "MÉXICO",
+    "pole": {
+      "piloto": "Rafael Ramalho",
+      "tempo": "1:16.456"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Hugo",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:18.147"
+    },
+    "piloto_dia": "Fernandes"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "BRASIL",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:16.765"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Hugo",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Santana",
+      "tempo": "1:09.661"
+    },
+    "piloto_dia": "Santana"
+  },
+  {
+    "temporada": "Temporada 1",
+    "jogo": "F1 22",
+    "etapa": "ABU DHABI",
+    "pole": {
+      "piloto": "Hugo",
+      "tempo": "1:23.688"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:25.931"
+    },
+    "piloto_dia": "LeoFera"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "BAHREIN",
+    "pole": {
+      "piloto": "Rafael Ramalho",
+      "tempo": "1:28.408"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Feliphe",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:30.831"
+    },
+    "piloto_dia": "Paulo Liberatti"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "JEDDAH",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:28.378"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafael Ramalho",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:31.111"
+    },
+    "piloto_dia": "TheProdigyNixx"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "AUSTRÁLIA",
+    "pole": {
+      "piloto": "Rafael Ramalho",
+      "tempo": "1:17.805"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:20.407"
+    },
+    "piloto_dia": "Rafahulk"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "BAKU",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:40.144"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Santana",
+        "posicao": 2
+      },
+      {
+        "piloto": "Arthur",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:43.108"
+    },
+    "piloto_dia": "Jeff Marchi"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "MIAMI",
+    "pole": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:27.380"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:28.709"
+    },
+    "piloto_dia": "LeoFera"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "IMOLA",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:15.727"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:17.633"
+    },
+    "piloto_dia": "Rafael Ramalho"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "MÔNACO",
+    "pole": {
+      "piloto": "Rafahulk",
+      "tempo": "1:10.388"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Allan Cataneo",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafahulk",
+      "tempo": "1:12.907"
+    },
+    "piloto_dia": "Allan Cataneo"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "ESPANHA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:17.295"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafael Ramalho",
+        "posicao": 2
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:19.951"
+    },
+    "piloto_dia": "Renan Mioto"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "CANADÁ",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:17.788"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:12.874"
+    },
+    "piloto_dia": "Ivan Storm"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "ÁUSTRIA",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:04.934"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:06.656"
+    },
+    "piloto_dia": "Paulo Liberatti"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "INGLATERRA",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:27.663"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:29.612"
+    },
+    "piloto_dia": "Santana"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "HUNGRIA",
+    "pole": {
+      "piloto": "Rafahulk",
+      "tempo": "1:16.588"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:18.040"
+    },
+    "piloto_dia": "Anderson Rodrigues"
+  },
+  {
+    "temporada": "Temporada 2",
+    "jogo": "F1 23",
+    "etapa": "BÉLGICA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:43.155"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:45.606"
+    },
+    "piloto_dia": "Nando Kamers"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "HOLANDA",
+    "pole": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:09.199"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Fernandes",
+      "tempo": "1:12.077"
+    },
+    "piloto_dia": "Fernandes"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "MONZA",
+    "pole": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:20.048"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 2
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "TioBarba",
+      "tempo": "1:21.610"
+    },
+    "piloto_dia": "Arthur"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "SINGAPURA",
+    "pole": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:29.510"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:31.977"
+    },
+    "piloto_dia": "Feeroots"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "JAPÃO",
+    "pole": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:27.646"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Arthur",
+        "posicao": 2
+      },
+      {
+        "piloto": "Feeroots",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:29.243"
+    },
+    "piloto_dia": "Anderson Rodrigues"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "QATAR",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:20.997"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:23.709"
+    },
+    "piloto_dia": "Anderson Rodrigues"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "TEXAS",
+    "pole": {
+      "piloto": "Caio Harfang",
+      "tempo": "1:33.483"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:35.557"
+    },
+    "piloto_dia": "Rafael Almeida"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "MÉXICO",
+    "pole": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:16.936"
+    },
+    "podio": [
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Arthur",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Thiago Vaz",
+      "tempo": "1:18.915"
+    },
+    "piloto_dia": "Nando Kamers"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "BRASIL",
+    "pole": {
+      "piloto": "Jhon Marchi",
+      "tempo": "1:08.453"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Pipoxu",
+      "tempo": "1:10.164"
+    },
+    "piloto_dia": "Pipoxu"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "LAS VEGAS",
+    "pole": {
+      "piloto": "Nando Kamers",
+      "tempo": "1:32.262"
+    },
+    "podio": [
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Arthur",
+      "tempo": "1:35.597"
+    },
+    "piloto_dia": "Rafael Almeida"
+  },
+  {
+    "temporada": "Temporada 3",
+    "jogo": "F1 23",
+    "etapa": "ABU DHABI",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:22.704"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Nando Kamers",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Feeroots",
+      "tempo": "1:24.562"
+    },
+    "piloto_dia": "TioBarba"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "BÉLGICA",
+    "pole": {
+      "piloto": "Jarryer",
+      "tempo": "1:51.670"
+    },
+    "podio": [
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 1
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 2
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:44.600"
+    },
+    "piloto_dia": "Caio Harfang"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "HOLANDA",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:09.162"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 2
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:10.975"
+    },
+    "piloto_dia": "Ivan Storm"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "MONZA",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:19.564"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Lucas Carmo",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:21.123"
+    },
+    "piloto_dia": "Duck Olivia"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "BAKU",
+    "pole": {
+      "piloto": "Lucas Carmo",
+      "tempo": "1:39.127"
+    },
+    "podio": [
+      {
+        "piloto": "Lucas Carmo",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:40.161"
+    },
+    "piloto_dia": "Rafael Almeida"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "SINGAPURA",
+    "pole": {
+      "piloto": "Jarryer",
+      "tempo": "1:27.097"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Jarryer",
+      "tempo": "1:29.681"
+    },
+    "piloto_dia": "Renan Mioto"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "TEXAS",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:31.693"
+    },
+    "podio": [
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 1
+      },
+      {
+        "piloto": "Lucas Carmo",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Anderson Rodrigues",
+      "tempo": "1:33.820"
+    },
+    "piloto_dia": "Lucas Carmo"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "MÉXICO",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:13.980"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Arthur",
+      "tempo": "1:16.109"
+    },
+    "piloto_dia": "Caio Harfang"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "BRASIL",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:15.300"
+    },
+    "podio": [
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Rafael Almeida",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:16.197"
+    },
+    "piloto_dia": "Leo Neto"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "LAS VEGAS",
+    "pole": {
+      "piloto": "Jarryer",
+      "tempo": "1:31.333"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 2
+      },
+      {
+        "piloto": "Leo Neto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafael Almeida",
+      "tempo": "1:33.132"
+    },
+    "piloto_dia": "Lucas Carmo"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "QATAR",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:21.285"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Jarryer",
+      "tempo": "1:24.482"
+    },
+    "piloto_dia": "Thiago Ferraz"
+  },
+  {
+    "temporada": "Temporada 4",
+    "jogo": "F1 24",
+    "etapa": "ABU DHABI",
+    "pole": {
+      "piloto": "Lucas Moresch",
+      "tempo": "1:22.461"
+    },
+    "podio": [
+      {
+        "piloto": "Lucas Moresch",
+        "posicao": 1
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:25.563"
+    },
+    "piloto_dia": "Ivan Storm"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "AUSTRALIA",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:15.614"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:20.552"
+    },
+    "piloto_dia": "Anderson Rodrigues"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "CHINA",
+    "pole": {
+      "piloto": "Caio Harfang",
+      "tempo": "1:30.744"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Jhon Marchi",
+        "posicao": 2
+      },
+      {
+        "piloto": "Leo Neto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:33.845"
+    },
+    "piloto_dia": "Feliphe"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "JAPÃO",
+    "pole": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:27.677"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:30.461"
+    },
+    "piloto_dia": "Jeff Marchi"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "BAHREIN",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:27.486"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Samuka",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Leo Neto",
+      "tempo": "1:29.967"
+    },
+    "piloto_dia": "Alan Cadu"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "JEDDAH",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:27.960"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Tony Peterson",
+      "tempo": "1:29.850"
+    },
+    "piloto_dia": "Fernandes"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "MIAMI",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:25.544"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Jhon Marchi",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Tony Peterson",
+      "tempo": "1:28.704"
+    },
+    "piloto_dia": "Leo Neto"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "IMOLA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:13.848"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Anderson Rodrigues",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:16.604"
+    },
+    "piloto_dia": "Alexx Navarro"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "MÔNACO",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:08.175"
+    },
+    "podio": [
+      {
+        "piloto": "Samuka",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafahulk",
+      "tempo": "1:10.536"
+    },
+    "piloto_dia": "Caio Harfang"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "ESPANHA",
+    "pole": {
+      "piloto": "Renan Mioto",
+      "tempo": "1:11.776"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 2
+      },
+      {
+        "piloto": "Jhon Marchi",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Anderson Rodrigues",
+      "tempo": "1:13.917"
+    },
+    "piloto_dia": "Leo Neto"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "CANADA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:08.927"
+    },
+    "podio": [
+      {
+        "piloto": "Samuka",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Samuka",
+      "tempo": "1:10.726"
+    },
+    "piloto_dia": "Samuka"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "AUSTRIA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:03.927"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Caio Harfang",
+        "posicao": 2
+      },
+      {
+        "piloto": "Anderson Rodrigues",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:05.733"
+    },
+    "piloto_dia": "Thiago Ferraz"
+  },
+  {
+    "temporada": "Temporada 5",
+    "jogo": "F1 24",
+    "etapa": "INGLATERRA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:26.530"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Cícero",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:27.987"
+    },
+    "piloto_dia": "Jeff Marchi"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "BÉLGICA",
+    "pole": {
+      "piloto": "Tony Peterson",
+      "tempo": "1:41.800"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 2
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:44.191"
+    },
+    "piloto_dia": "Arthur"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "HUNGRIA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:15.767"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Thiago Ferraz",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafahulk",
+      "tempo": "1:18.018"
+    },
+    "piloto_dia": "Tony Peterson"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "HOLANDA",
+    "pole": {
+      "piloto": "Tony Peterson",
+      "tempo": "1:09.162"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Thiago Ferraz",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Rafahulk",
+      "tempo": "1:10.428"
+    },
+    "piloto_dia": "Ivan Storm"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "MONZA",
+    "pole": {
+      "piloto": "Alan Cadu",
+      "tempo": "1:18.445"
+    },
+    "podio": [
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Tony Peterson",
+      "tempo": "1:21.230"
+    },
+    "piloto_dia": "Renan Mioto"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "BAKU",
+    "pole": {
+      "piloto": "Rafahulk",
+      "tempo": "1:38.910"
+    },
+    "podio": [
+      {
+        "piloto": "Rafahulk",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Thiago Ferraz",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Fernando Tezotto",
+      "tempo": "1:41.648"
+    },
+    "piloto_dia": "Paulo Liberatti"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "SINGAPURA",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:28.249"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Feliphe",
+      "tempo": "1:31.339"
+    },
+    "piloto_dia": "Jeff Marchi"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "TEXAS",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:32.056"
+    },
+    "podio": [
+      {
+        "piloto": "Thiago Ferraz",
+        "posicao": 1
+      },
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:34.576"
+    },
+    "piloto_dia": "Fernando Tezotto"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "MÉXICO",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:15.110"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Arthur",
+      "tempo": "1:17.624"
+    },
+    "piloto_dia": "Rafahulk"
+  }
+]
