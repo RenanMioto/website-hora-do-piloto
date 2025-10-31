@@ -254,12 +254,12 @@ body::before{
 .section-head .back{color:var(--muted); text-decoration:none}
 .section-head .back:hover{color:var(--text)}
 .grid{
-  display:grid; gap:14px;
+  display:relative; gap:14px;
   grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
 }
 .figure img {
   display: block;
-  max-width: 70%;
+  max-width: 60%;
   height: auto;
   margin: 0 auto;
   object-fit: contain;
