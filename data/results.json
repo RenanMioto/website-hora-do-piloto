@@ -1846,5 +1846,33 @@
       "tempo": "1:17.624"
     },
     "piloto_dia": "Rafahulk"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "BRASIL",
+    "pole": {
+      "piloto": "Jeff Marchi",
+      "tempo": "1:07.620"
+    },
+    "podio": [
+      {
+        "piloto": "Renan Mioto",
+        "posicao": 1
+      },
+      {
+        "piloto": "Rafahulk",
+        "posicao": 2
+      },
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Arthur",
+      "tempo": "1:10.266"
+    },
+    "piloto_dia": "Renan Mioto"
   }
 ]
