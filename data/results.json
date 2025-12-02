@@ -1874,5 +1874,33 @@
       "tempo": "1:10.266"
     },
     "piloto_dia": "Renan Mioto"
+  },
+  {
+    "temporada": "Temporada 6",
+    "jogo": "F1 25",
+    "etapa": "QATAR",
+    "pole": {
+      "piloto": "Paulo Liberatti",
+      "tempo": "1:21.139"
+    },
+    "podio": [
+      {
+        "piloto": "Paulo Liberatti",
+        "posicao": 1
+      },
+      {
+        "piloto": "Alan Cadu",
+        "posicao": 2
+      },
+      {
+        "piloto": "Jeff Marchi",
+        "posicao": 3
+      }
+    ],
+    "volta_rapida": {
+      "piloto": "Thiago Ferraz",
+      "tempo": "1:24.143"
+    },
+    "piloto_dia": "Arthur"
   }
 ]
